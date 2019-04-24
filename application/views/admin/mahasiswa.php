@@ -18,193 +18,96 @@
          ?>
 		<!-- Page content -->
 		<div class="container-fluid mt--6">
-			<!-- Table -->
-			<div class="row">
-				<div class="col">
-					<div class="card">
-						<!-- Card header -->
-						<div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <h3 class="mb-0">Mahasiswa Magang</h3>
-                                <p class="text-sm mb-0">
-                                        This is an example of user management. This is a minimal setup in order to get started fast.
-                                    </p>
-                            </div>
-                                                            <div class="col-4 text-right">
-                                    <a href="<?php redirect(site_url('mahasiswa/create')) ?>" class="btn btn-sm btn-primary">Add user</a>
-                                </div>
-                                                    </div>
-                    </div>
-						<div class="table-responsive py-4">
-							<table class="table table-flush" id="datatable-buttons">
-								<thead class="thead-light">
-									<tr role="row">
-										<th>Name</th>
-										<th>Position</th>
-										<th>Office</th>
-										<th>Age</th>
-										<th>Start date</th>
-										<th>Salary</th>
-									</tr>
-								</thead>
-								<tfoot>
-									<tr>
-										<th>Name</th>
-										<th>Position</th>
-										<th>Office</th>
-										<th>Age</th>
-										<th>Start date</th>
-										<th>Salary</th>
-									</tr>
-								</tfoot>
-								<tbody>
-									<tr role="row" class="odd">
-										<td class="sorting_1">Airi Satou</td>
-										<td>Accountant</td>
-										<td>Tokyo</td>
-										<td>33</td>
-										<td>2008/11/28</td>
-										<td>$162,700</td>
-									</tr>
-									<tr role="row" class="even">
-										<td class="sorting_1">Angelica Ramos</td>
-										<td>Chief Executive Officer (CEO)</td>
-										<td>London</td>
-										<td>47</td>
-										<td>2009/10/09</td>
-										<td>$1,200,000</td>
-									</tr>
-									<tr role="row" class="odd">
-										<td class="sorting_1">Ashton Cox</td>
-										<td>Junior Technical Author</td>
-										<td>San Francisco</td>
-										<td>66</td>
-										<td>2009/01/12</td>
-										<td>$86,000</td>
-									</tr>
-									<tr role="row" class="even">
-										<td class="sorting_1">Bradley Greer</td>
-										<td>Software Engineer</td>
-										<td>London</td>
-										<td>41</td>
-										<td>2012/10/13</td>
-										<td>$132,000</td>
-									</tr>
-									<tr role="row" class="odd">
-										<td class="sorting_1">Brenden Wagner</td>
-										<td>Software Engineer</td>
-										<td>San Francisco</td>
-										<td>28</td>
-										<td>2011/06/07</td>
-										<td>$206,850</td>
-									</tr>
-									<tr role="row" class="even">
-										<td class="sorting_1">Brielle Williamson</td>
-										<td>Integration Specialist</td>
-										<td>New York</td>
-										<td>61</td>
-										<td>2012/12/02</td>
-										<td>$372,000</td>
-									</tr>
-									<tr role="row" class="odd">
-										<td class="sorting_1">Bruno Nash</td>
-										<td>Software Engineer</td>
-										<td>London</td>
-										<td>38</td>
-										<td>2011/05/03</td>
-										<td>$163,500</td>
-									</tr>
-									<tr role="row" class="even">
-										<td class="sorting_1">Caesar Vance</td>
-										<td>Pre-Sales Support</td>
-										<td>New York</td>
-										<td>21</td>
-										<td>2011/12/12</td>
-										<td>$106,450</td>
-									</tr>
-									<tr role="row" class="odd">
-										<td class="sorting_1">Airi Satou</td>
-										<td>Accountant</td>
-										<td>Tokyo</td>
-										<td>33</td>
-										<td>2008/11/28</td>
-										<td>$162,700</td>
-									</tr>
-									<tr role="row" class="even">
-										<td class="sorting_1">Angelica Ramos</td>
-										<td>Chief Executive Officer (CEO)</td>
-										<td>London</td>
-										<td>47</td>
-										<td>2009/10/09</td>
-										<td>$1,200,000</td>
-									</tr>
-									<tr role="row" class="odd">
-										<td class="sorting_1">Ashton Cox</td>
-										<td>Junior Technical Author</td>
-										<td>San Francisco</td>
-										<td>66</td>
-										<td>2009/01/12</td>
-										<td>$86,000</td>
-									</tr>
-									<tr role="row" class="even">
-										<td class="sorting_1">Bradley Greer</td>
-										<td>Software Engineer</td>
-										<td>London</td>
-										<td>41</td>
-										<td>2012/10/13</td>
-										<td>$132,000</td>
-									</tr>
-									<tr role="row" class="odd">
-										<td class="sorting_1">Brenden Wagner</td>
-										<td>Software Engineer</td>
-										<td>San Francisco</td>
-										<td>28</td>
-										<td>2011/06/07</td>
-										<td>$206,850</td>
-									</tr>
-									<tr role="row" class="even">
-										<td class="sorting_1">Brielle Williamson</td>
-										<td>Integration Specialist</td>
-										<td>New York</td>
-										<td>61</td>
-										<td>2012/12/02</td>
-										<td>$372,000</td>
-									</tr>
-									<tr role="row" class="odd">
-										<td class="sorting_1">Bruno Nash</td>
-										<td>Software Engineer</td>
-										<td>London</td>
-										<td>38</td>
-										<td>2011/05/03</td>
-										<td>$163,500</td>
-									</tr>
-									<tr role="row" class="even">
-										<td class="sorting_1">Caesar Vance</td>
-										<td>Pre-Sales Support</td>
-										<td>New York</td>
-										<td>21</td>
-										<td>2011/12/12</td>
-										<td>$106,450</td>
-									</tr>
-									<tr role="row" class="odd">
-										<td class="sorting_1">Cara Stevens</td>
-										<td>Sales Assistant</td>
-										<td>New York</td>
-										<td>46</td>
-										<td>2011/12/06</td>
-										<td>$145,600</td>
-									</tr>
-									<tr role="row" class="even">
-										<td class="sorting_1">Cedric Kelly</td>
-										<td>Senior Javascript Developer</td>
-										<td>Edinburgh</td>
-										<td>22</td>
-										<td>2012/03/29</td>
-										<td>$433,060</td>
-									</tr>
-								</tbody>
-							</table>
+			<!-- Card -->
+			<div class="header-body">
+				<!-- Card stats -->
+				<div class="row">
+					<div class="col-xl-3 col-lg-6">
+						<div class="card card-stats mb-4 mb-xl-0">
+							<a href="<?php echo site_url('mahasiswa?m=magang') ?>">
+								<div class="card-body">
+									<div class="row">
+										<div class="col">
+											<h5 class="card-title text-uppercase text-muted mb-0">Mahasiswa</h5>
+											<span class="h2 font-weight-bold mb-0">Magang</span>
+										</div>
+										<div class="col-auto">
+											<div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+												<i class="fas fa-user-graduate"></i>
+											</div>
+										</div>
+									</div>
+									<p class="mt-3 mb-0 text-muted text-sm">
+										<span class="text-wrap">Daftar mahasiswa yang berhak untuk melaksanakan
+											magang</span>
+									</p>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-6">
+						<div class="card card-stats mb-4 mb-xl-0">
+							<a href="<?php echo site_url('mahasiswa?m=sidang') ?>">
+								<div class="card-body">
+									<div class="row">
+										<div class="col">
+											<h5 class="card-title text-uppercase text-muted mb-0">Mahasiswa</h5>
+											<span class="h2 font-weight-bold mb-0">Sidang</span>
+										</div>
+										<div class="col-auto">
+											<div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+												<i class="fas fa-chalkboard-teacher"></i>
+											</div>
+										</div>
+									</div>
+									<p class="mt-3 mb-0 text-muted text-sm">
+										<span class="text-wrap">Mahasiswa yang berhak dan tidak berhak untuk
+											melaksanakan sidang</span>
+									</p>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-6">
+						<div class="card card-stats mb-4 mb-xl-0">
+							<div class="card-body">
+								<div class="row">
+									<div class="col">
+										<h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+										<span class="h2 font-weight-bold mb-0">924</span>
+									</div>
+									<div class="col-auto">
+										<div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+											<i class="fas fa-users"></i>
+										</div>
+									</div>
+								</div>
+								<p class="mt-3 mb-0 text-muted text-sm">
+									<span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+									<span class="text-nowrap">Since yesterday</span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-6">
+						<div class="card card-stats mb-4 mb-xl-0">
+							<div class="card-body">
+								<div class="row">
+									<div class="col">
+										<h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+										<span class="h2 font-weight-bold mb-0">49,65%</span>
+									</div>
+									<div class="col-auto">
+										<div class="icon icon-shape bg-info text-white rounded-circle shadow">
+											<i class="fas fa-percent"></i>
+										</div>
+									</div>
+								</div>
+								<p class="mt-3 mb-0 text-muted text-sm">
+									<span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+									<span class="text-nowrap">Since last month</span>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -215,8 +118,8 @@
 
 	</div>
 	<!-- Scripts PHP-->
-	<?php $this->load->view('admin/_partials/js.php');
-    ?>
+	<?php $this->load->view('admin/_partials/modal.php');?>
+	<?php $this->load->view('admin/_partials/js.php');?>
 	<!-- Demo JS - remove this in your project -->
 	<!-- <script src="../assets/js/demo.min.js"></script> -->
 </body>

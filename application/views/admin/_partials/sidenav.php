@@ -106,53 +106,29 @@
 						<i class="ni ni-ungroup text-orange"></i>
 						<span class="nav-link-text">Master</span>
 					</a>
-					<div class="collapse" id="navbar-master" style="">
+					<div class="collapse" id="navbar-master">
 						<ul class="nav nav-sm flex-column">
 							<li class="nav-item">
-								<a href="../../pages/examples/pricing.html" class="nav-link">Tahun Akademik</a>
+								<a href="<?php echo site_url('tahunakademik') ?>" class="nav-link">Tahun Akademik</a>
 							</li>
 							<li class="nav-item">
-								<a href="../../pages/examples/login.html" class="nav-link">Program Studi</a>
+								<a href="<?php echo site_url('prodi') ?>" class="nav-link">Program Studi</a>
 							</li>
 							<li class="nav-item">
-								<a href="../../pages/examples/login.html" class="nav-link">Wilayah</a>
+								<a href="<?php echo site_url('wilayah') ?>" class="nav-link">Wilayah</a>
 							</li>
 						</ul>
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#navbar-mhs" data-toggle="collapse" role="button"
-						aria-expanded="false" aria-controls="navbar-mhs">
-						<i class="ni ni-ungroup text-orange"></i>
-						<span class="nav-link-text">Mahasiswa</span>
+					<a class="nav-link" href="<?php echo site_url('mahasiswa') ?>">
+						<i class="ni ni-tv-2 text-primary"></i> Mahasiswa
 					</a>
-					<div class="collapse" id="navbar-mhs" style="">
-						<ul class="nav nav-sm flex-column">
-							<li class="nav-item">
-								<a href="../../pages/examples/pricing.html" class="nav-link">Magang</a>
-							</li>
-							<li class="nav-item">
-								<a href="../../pages/examples/login.html" class="nav-link">Sidang</a>
-							</li>
-						</ul>
-					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#navbar-dosen" data-toggle="collapse" role="button"
-						aria-expanded="false" aria-controls="navbar-dosen">
-						<i class="ni ni-ungroup text-orange"></i>
-						<span class="nav-link-text">Dosen</span>
+					<a class="nav-link" href="<?php echo site_url('dosen') ?>">
+						<i class="ni ni-tv-2 text-primary"></i> Dosen
 					</a>
-					<div class="collapse" id="navbar-dosen" style="">
-						<ul class="nav nav-sm flex-column">
-							<li class="nav-item">
-								<a href="../../pages/examples/pricing.html" class="nav-link">Pembimbing</a>
-							</li>
-							<li class="nav-item">
-								<a href="../../pages/examples/login.html" class="nav-link">Penguji</a>
-							</li>
-						</ul>
-					</div>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#navbar-prsh" data-toggle="collapse" role="button"
@@ -160,7 +136,7 @@
 						<i class="ni ni-ungroup text-orange"></i>
 						<span class="nav-link-text">Perusahaan</span>
 					</a>
-					<div class="collapse" id="navbar-prsh" style="">
+					<div class="collapse" id="navbar-prsh">
 						<ul class="nav nav-sm flex-column">
 							<li class="nav-item">
 								<a href="../../pages/examples/pricing.html" class="nav-link">Pembimbing Lapangan</a>

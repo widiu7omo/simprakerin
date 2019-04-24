@@ -13,5 +13,12 @@
 <script src="<?php echo base_url('assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/datatables.net-buttons/js/buttons.print.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/datatables.net-select/js/dataTables.select.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/vendor/dropzone/dist/min/dropzone.js') ?>"></script>
 <!-- Argon JS -->
 <script src="<?php echo base_url('assets/js/argon.js') ?>"></script>
+<script>
+function deleteConfirm(url){
+	$('#btn-delete').attr('href', url);
+	$('#deleteModal').modal();
+}
+</script>

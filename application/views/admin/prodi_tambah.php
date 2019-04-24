@@ -2,6 +2,10 @@
 <html>
 
 <!-- Head PHP -->
+<!-- Create Auto generate id -->
+<?php $this->load->helper('autoid'); ?>
+<?php $newId = generate_id('tb_program_studi','id_program_studi') ?>
+
 <?php  $this->load->view('admin/_partials/header.php');?>
 
 <body>
@@ -24,88 +28,57 @@
 					<div class="card">
 						<!-- Card header -->
 						<div class="card-header">
-							<h3 class="mb-0">Input groups</h3>
+							<div class="row align-items-center">
+								<div class="col-8">
+									<h3 class="mb-0">User Management</h3>
+								</div>
+								<div class="col-4 text-right">
+									<a href="<?php echo site_url('prodi') ?>" class="btn btn-sm btn-primary">Back to
+										list</a>
+								</div>
+							</div>
 						</div>
 						<!-- Card body -->
 						<div class="card-body">
-							<form>
+							<form action="<?php site_url('prodi/create') ?>" method="POST">
 								<!-- Input groups with icon -->
 								<div class="row">
-									<div class="col-md-6">
+									<div class="col-md-12">
+										<?php if ($this->session->flashdata('success')): ?>
+										<div class="alert alert-success alert-dismissible fade show" role="alert">
+											<span class="alert-icon"><i class="ni ni-like-2"></i></span>
+											<span
+												class="alert-text"><strong>Success! &nbsp;</strong><?php echo $this->session->flashdata('success'); ?></span>
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<?php endif; ?>
 										<div class="form-group">
 											<div class="input-group input-group-merge">
 												<div class="input-group-prepend">
-													<span class="input-group-text"><i class="fas fa-user"></i></span>
+													<span class="input-group-text"><i class="fas fa-code"></i></span>
 												</div>
-												<input class="form-control" placeholder="Your name" type="text">
+												<input class="form-control is-invalid" value="<?php echo $newId ?>" name="id"
+													placeholder="ID Program Studi" readonly type="text">
 											</div>
 										</div>
 									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="input-group input-group-merge">
-												<div class="input-group-prepend">
-													<span class="input-group-text"><i
-															class="fas fa-envelope"></i></span>
-												</div>
-												<input class="form-control" placeholder="Email address" type="email">
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="input-group input-group-merge">
-												<input class="form-control" placeholder="Location" type="text">
-												<div class="input-group-append">
-													<span class="input-group-text"><i
-															class="fas fa-map-marker"></i></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="input-group input-group-merge">
-												<input class="form-control" placeholder="Password" type="password">
-												<div class="input-group-append">
-													<span class="input-group-text"><i class="fas fa-eye"></i></span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Input groups with icon -->
-								<div class="row">
-									<div class="col-md-6">
+									<div class="col-md-12">
 										<div class="form-group">
 											<div class="input-group input-group-merge">
 												<div class="input-group-prepend">
 													<span class="input-group-text"><i
-															class="fas fa-credit-card"></i></span>
+															class="fas fa-university"></i></span>
 												</div>
-												<input class="form-control" placeholder="Payment method" type="text">
-												<div class="input-group-append">
-													<span class="input-group-text"><small
-															class="font-weight-bold">USD</small></span>
-												</div>
+												<input class="form-control" name="name"
+													placeholder="Nama Program Studi Baru" type="text">
 											</div>
+											<?php echo form_error('name','<small class="text-danger">','</small>'); ?>
 										</div>
 									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="input-group input-group-merge">
-												<div class="input-group-prepend">
-													<span class="input-group-text"><i
-															class="fas fa-globe-americas"></i></span>
-												</div>
-												<input class="form-control" placeholder="Phone number" type="text">
-												<div class="input-group-append">
-													<span class="input-group-text"><i class="fas fa-phone"></i></span>
-												</div>
-											</div>
-										</div>
+									<div class="col-md-12 text-md-right align-content-end">
+										<button type="submit" class="btn btn-success">Simpan</button>
 									</div>
 								</div>
 							</form>
