@@ -15,7 +15,7 @@
 <script src="<?php echo base_url('assets/vendor/datatables.net-select/js/dataTables.select.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/dropzone/dist/min/dropzone.js') ?>"></script>
 <!-- Argon JS -->
-<script src="<?php echo base_url('assets/js/argon.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/argonpro.js') ?>"></script>
 <script>
 function deleteConfirm(url){
 	$('#btn-delete').attr('href', url);

@@ -1,9 +1,15 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
 
-class Mahasiswa extends CI_Controller {
+use Tools\Excel;
+require APPPATH.'libraries/Excel.php';
+defined('BASEPATH') OR exit('No direct script access allowed');
+// Use upload Library and Excel library
+
+class Mahasiswa extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('upload');
         $this->load->model('mahasiswa_model');
         $this->load->library('form_validation');
     }
@@ -58,4 +64,14 @@ class Mahasiswa extends CI_Controller {
             redirect(site_url('mahasiswa'));
         }
     }
+    public function import(){
+        $data = do_upload();
+        $file = $data['upload_data'];
+        var_dump($file);
+        $excel = new Excel;
+        $type = ucfirst(substr($file['file_ext'],1));
+        var_dump($type);
+        $sheetNames = $excel->readSheetName($file['full_path'],$type);
+    }
+    
 } ?>

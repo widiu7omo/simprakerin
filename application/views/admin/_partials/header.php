@@ -16,5 +16,5 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') ?>">
     <link rel="stylesheet" href=" <?php echo base_url('assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') ?>">
     <!-- Argon CSS -->
-    <link type="text/css" href="<?php echo base_url('assets/css/argon.css') ?>" rel="stylesheet">
+    <link type="text/css" href="<?php echo base_url('assets/css/argonpro.css') ?>" rel="stylesheet">
 </head>

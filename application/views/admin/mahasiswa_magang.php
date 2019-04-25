@@ -43,25 +43,48 @@
 											</p>
 											<div class="collapse" id="collapseExample">
 												<div class="card card-body">
-													<form action="<?php //echo site_url('') @TODO: action change and method=POST?>"></form>
+													<?php echo form_open_multipart('mahasiswa/import') ?>
 													<div class="form-group">
 														<label class="form-control-label"
-															for="exampleFormControlSelect1">Tentukan Program Studi</label>
+															for="exampleFormControlSelect1">Tentukan Program
+															Studi</label>
 														<select class="form-control" id="exampleFormControlSelect1">
 															<?php foreach ($prodies as $prodi): ?>
-															<option value="<?php echo $prodi->id_program_studi ?>"><?php echo $prodi->nama_program_studi ?></option>
+															<option value="<?php echo $prodi->id_program_studi ?>">
+																<?php echo $prodi->nama_program_studi ?></option>
 															<?php endforeach; ?>
 														</select>
 													</div>
-													<div class="dropzone dropzone-single" data-toggle="dropzone">
-														<div class="fallback">
-															<div class="custom-file">
-																<input type="file" class="custom-file-input"
-																	id="dropzoneBasicUpload">
-																<label class="custom-file-label"
-																	for="dropzoneBasicUpload">Choose file</label>
-															</div>
+													<div class="dropzone dropzone-multiple dz-clickable"
+														data-toggle="dropzone" data-dropzone-multiple=""
+														data-dropzone-url="<?php echo site_url('ajax/initimport') ?>">
+
+														<ul
+															class="dz-preview dz-preview-multiple list-group list-group-lg list-group-flush ">
+														</ul>
+														<div class="dz-default dz-message">
+															<span>Drop files here to upload</span>
+															<div class="spinner-border text-danger" role="status">
+															<span class="sr-only">Loading...</span>
 														</div>
+														</div>
+														
+													</div>
+
+													<div class="form-group sheet-form-name" style="display:none">
+														<label class="form-control-label" for="sheet-name">Pilih Nama
+															sheet yang akan di import</label>
+														<select class="form-control" id="sheet-name">
+															<?php foreach ($prodies as $prodi): ?>
+															<option value="<?php echo $prodi->id_program_studi ?>">
+																<?php echo $prodi->nama_program_studi ?></option>
+															<?php endforeach; ?>
+														</select>
+													</div>
+
+													<div class="text-md-right align-content-end mt-3 mb--4">
+														<button id="btn_atur_tahun" type="submit"
+															class="btn btn-success">Simpan</button>
 													</div>
 												</div>
 											</div>
