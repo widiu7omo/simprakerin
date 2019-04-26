@@ -6,6 +6,7 @@
 <!-- Custom Helper -->
 <?php $this->load->helper('master_helper');
 	$prodies = masterdata('tb_program_studi');
+	$currentTahun = masterdata('tb_waktu');
  ?>
 
 <body>
@@ -23,8 +24,21 @@
 		<!-- Page content -->
 		<div class="container-fluid mt--6">
 			<!-- Export -->
+
 			<div class="row">
-				<div class="col">
+				<div class="col" id="mainbody">
+					<?php if ($this->session->flashdata('success')): ?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<span class="alert-icon"><i class="ni ni-like-2"></i></span>
+						<span class="alert-text"><strong>Success!
+								&nbsp;</strong><?php echo $this->session->flashdata('success'); ?></span><br>
+						<small class="alert-text">Data Mahasiswa sebanyak <?php echo $this->session->flashdata('status')->tb_mahasiswa ?></small><br>
+						<small class="alert-text">Akun sebanyak <?php echo $this->session->flashdata('status')->tb_akun ?> telah terbuat</small>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<?php endif; ?>
 					<div class="card mb-5">
 						<div class="card-header">
 							<h3>Import Data Mahasiswa Magang</h3>
@@ -45,15 +59,18 @@
 												<div class="card card-body">
 													<?php echo form_open_multipart('mahasiswa/import') ?>
 													<div class="form-group">
-														<label class="form-control-label"
-															for="exampleFormControlSelect1">Tentukan Program
+														<label class="form-control-label" for="program-studi">Tentukan
+															Program
 															Studi</label>
-														<select class="form-control" id="exampleFormControlSelect1">
+														<select class="form-control" id="program-studi"
+															name="programstudi">
+															<option value="">Pilih Program Studi</option>
 															<?php foreach ($prodies as $prodi): ?>
 															<option value="<?php echo $prodi->id_program_studi ?>">
 																<?php echo $prodi->nama_program_studi ?></option>
 															<?php endforeach; ?>
 														</select>
+														<input type="hidden" name="tahunakademik" value="<?php echo $currentTahun[0]->id_tahun_akademik ?>">
 													</div>
 													<div class="dropzone dropzone-multiple dz-clickable"
 														data-toggle="dropzone" data-dropzone-multiple=""
@@ -65,26 +82,38 @@
 														<div class="dz-default dz-message">
 															<span>Drop files here to upload</span>
 															<div class="spinner-border text-danger" role="status">
-															<span class="sr-only">Loading...</span>
+																<span class="sr-only">Loading...</span>
+															</div>
 														</div>
-														</div>
-														
+
 													</div>
 
 													<div class="form-group sheet-form-name" style="display:none">
-														<label class="form-control-label" for="sheet-name">Pilih Nama
-															sheet yang akan di import</label>
-														<select class="form-control" id="sheet-name">
-															<?php foreach ($prodies as $prodi): ?>
-															<option value="<?php echo $prodi->id_program_studi ?>">
-																<?php echo $prodi->nama_program_studi ?></option>
-															<?php endforeach; ?>
-														</select>
+														<div class="row">
+															<div class="col-md-5 col-sm-5 col-lg-5">
+																<label class="form-control-label" for="sheet-name">Pilih
+																	Nama
+																	sheet yang akan di import</label>
+																<select class="form-control" id="sheet-name"
+																	name="sheet-name">
+																	<option value="">Pilih Sheet</option>
+																</select>
+															</div>
+															<div class="col-md-7 col-sm-7 col-lg-7 mt-4">
+																<small>* Pastikan nama kolom (header) berada pada baris
+																	pertama (pada posisi A1)
+																</small><br>
+																<small>* Kami hanya akan mengimport kolom 'nama' dan
+																	'nim' (pastikan nama kolom benar)</small>
+															</div>
+														</div>
+
+
 													</div>
 
-													<div class="text-md-right align-content-end mt-3 mb--4">
-														<button id="btn_atur_tahun" type="submit"
-															class="btn btn-success">Simpan</button>
+													<div class="text-md-right align-content-end mt-3 mb-2">
+														<a id="btn_import" href="#" onclick="doImport();return false"
+															class="btn btn-success">Simpan</a>
 													</div>
 												</div>
 											</div>
@@ -171,6 +200,193 @@
 	<!-- Scripts PHP-->
 	<?php $this->load->view('admin/_partials/modal.php');?>
 	<?php $this->load->view('admin/_partials/js.php');?>
+	<script src="<?php echo base_url('assets/vendor/js-xlsx/dist/xlsx.full.min.js') ?>"></script>
+	<script>
+		var Dropzones = (function () {
+
+			//
+			// Variables
+			//
+
+			var $dropzone = $('[data-toggle="dropzone"]');
+			var $dropzonePreview = $('.dz-preview');
+
+			//
+			// Methods
+			//
+
+			function init($this) {
+				var multiple = ($this.data('dropzone-multiple') !== undefined) ? true : false;
+				var preview = $this.find($dropzonePreview);
+				var currentFile = undefined;
+
+
+				// Init options
+				var options = {
+					url: $this.data('dropzone-url'),
+					maxFiles: (!multiple) ? 1 : 1,
+					acceptedFiles: (!multiple) ? '.xls,.xlsx' : null,
+					init: function () {
+						this.on("addedfile", function (file) {
+								if (!multiple && currentFile) {
+									this.removeFile(currentFile);
+								}
+								currentFile = file;
+							}),
+							this.on("processing", function (file, progress) {
+								console.log('processing')
+								$('.dz-message').addClass('loading-overlay')
+							}),
+							this.on("success", function (file, response) {
+								console.log(file)
+								getWorkbook(file)
+								console.log(JSON.parse(response))
+								var sheetNames = JSON.parse(response);
+								$('.dz-message').removeClass('loading-overlay')
+								$('.sheet-form-name').css('display', 'block')
+
+							})
+					}
+				}
+
+				// Clear preview html
+				preview.html('');
+
+				// Init dropzone
+				$this.dropzone(options)
+			}
+
+			function globalOptions() {
+				Dropzone.autoDiscover = false;
+			}
+
+			//
+			// Events
+			//
+
+			if ($dropzone.length) {
+
+				// Set global options
+				globalOptions();
+
+				// Init dropzones
+				$dropzone.each(function () {
+					init($(this));
+				});
+			}
+
+		})();
+
+		///WORKBOOK SHEET.JS
+		var workbook = null;
+		var filteredData = null;
+
+		function getWorkbook(file) {
+			var rABS = false
+			const fileReader = new FileReader()
+			fileReader.onload = (e) => {
+				// store to data from event target
+				var data = e.target.result
+				// if not readAsArrayBinnary String, then convert to Unit8Array
+				if (!rABS) data = new Uint8Array(data)
+				// get workbook data with xlsx read method
+				workbook = XLSX.read(data, {
+					type: rABS ? 'binary' : 'array'
+				})
+				// dispatch workbook to excel store
+				console.log(workbook)
+				console.log(workbook.SheetNames)
+				var listSheet = workbook.SheetNames
+				listSheet.forEach((sheet) => {
+					$('#sheet-name').append('<option value="' + sheet + '">' +
+						sheet + '</option>')
+				})
+
+				$('#sheet-name').on('change', (e) => {
+					console.log(e.target.value)
+					if (e.target.value !== '') {
+						filteredData = retriveColumn(e.target.value)
+					}
+				})
+			}
+			if (rABS) {
+				fileReader.readAsBinaryString(file)
+			} else {
+				fileReader.readAsArrayBuffer(file);
+			}
+		}
+
+		function retriveColumn(sheetName) {
+			console.log(sheetName)
+			var selectedColumn = []
+			var patternHeaders = ['nim', 'nama']
+			var listHeaders = [];
+			var newObj = {}
+			var converToJson = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {
+				header: 1
+			})
+			if (converToJson.length !== 0) {
+				// get header file
+				listHeaders = converToJson[0]
+				// push data to temp sheet
+				// this how we slice the excel, make sure that your data on second row. (assume, you have header and sub header(2 row),and you start slice from third row [index == 2])
+				var tempSheet = converToJson.slice(2, converToJson.length)
+				console.log(tempSheet)
+				console.log(listHeaders)
+				var indexFound = []
+				listHeaders.map((header, index) => {
+					patternHeaders.forEach((pattern) => {
+						if ((typeof header !== 'number' ? header.toLowerCase() : null) === pattern
+							.toLowerCase()) {
+							indexFound.push({
+								name: header.toLowerCase(),
+								value: index
+							})
+						}
+					})
+				})
+				console.log(indexFound)
+				tempSheet.map((item) => {
+					indexFound.forEach((index) => {
+						newObj[index.name] = item[index.value]
+					})
+					Object.values(newObj)[0] !== undefined ? selectedColumn.push(newObj) : null
+					newObj = {}
+				})
+				console.log(selectedColumn)
+				return selectedColumn;
+			} else return null;
+		}
+
+		function doImport() {
+			console.log(workbook)
+			console.log(filteredData)
+			$('#btn_import').prop('disabled', true)
+			$.ajax({
+				url: '<?php echo site_url('mahasiswa/import') ?>',
+				method: 'POST',
+				datatype: 'JSON',
+				data: {
+					id_program_studi:$("[name=programstudi]").val(),
+					id_tahun_akademik:$("input[name=tahunakademik]").val(),
+					mahasiswas: JSON.stringify(filteredData)
+				},
+				success: (data) => {
+					$('#btn_import').prop('disabled', false)
+					console.log(data)
+					location.reload()
+				},
+				error: (err) => {
+					$('#btn_import').prop('disabled', false)
+					var filterStyleTag = err.responseText.replace(/(<(script|style)\b[^>]*>).*?(<\/\2>)/is,'')
+					var filterAllHtmlTag = filterStyleTag.replace(/(<([^>]+)>)|[ \t]+|\s+|^\s|$/gi,' ')
+					alert(filterAllHtmlTag)
+					// console.log(err)
+				}
+			})
+		}
+
+	</script>
 	<!-- Demo JS - remove this in your project -->
 	<!-- <script src="../assets/js/demo.min.js"></script> -->
 </body>

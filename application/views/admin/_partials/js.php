@@ -14,6 +14,7 @@
 <script src="<?php echo base_url('assets/vendor/datatables.net-buttons/js/buttons.print.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/datatables.net-select/js/dataTables.select.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/dropzone/dist/min/dropzone.js') ?>"></script>
+<script src="<?php echo base_url('assets/vendor/select2/select2.min.js') ?>"></script>
 <!-- Argon JS -->
 <script src="<?php echo base_url('assets/js/argonpro.js') ?>"></script>
 <script>

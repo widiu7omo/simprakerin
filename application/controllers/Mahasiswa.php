@@ -11,6 +11,7 @@ class Mahasiswa extends MY_Controller {
         parent::__construct();
         $this->load->helper('upload');
         $this->load->model('mahasiswa_model');
+        $this->load->model('akun_model');
         $this->load->library('form_validation');
     }
     public function index()
@@ -65,13 +66,24 @@ class Mahasiswa extends MY_Controller {
         }
     }
     public function import(){
-        $data = do_upload();
-        $file = $data['upload_data'];
-        var_dump($file);
-        $excel = new Excel;
-        $type = ucfirst(substr($file['file_ext'],1));
-        var_dump($type);
-        $sheetNames = $excel->readSheetName($file['full_path'],$type);
+        $post = $this->input->post();
+        //POST must containt data mahasiswa, tahunakademik and prodi
+        // $data = do_upload('userfile');
+        // $file = $data['upload_data'];
+        if(isset($post['mahasiswas'])){
+            $mahasiswas = json_decode($post['mahasiswas']);
+            $addtionalDatas['id_tahun_akademik'] = $post['id_tahun_akademik'];
+            $addtionalDatas['id_program_studi'] = $post['id_program_studi'];
+            $response = $this->akun_model->insert_batch($mahasiswas,'mahasiswa',$addtionalDatas);
+            var_dump($response);
+            if($response['status']){
+                $this->session->set_flashdata('success','Data berhasil di import');
+                $this->session->set_flashdata('status',(object)$response);
+            }
+        }
+        
+       
+
     }
     
 } ?>

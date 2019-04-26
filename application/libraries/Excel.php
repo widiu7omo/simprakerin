@@ -21,10 +21,11 @@ class Excel{
         $getSheetName = $spreadsheet->getSheetNames();
         return $getSheetName;
     }
-    public function readSpecificSheet($sheetName,$file,$type){
-        if($file == null){
-            show_error("Can't Read Excel File",500);
-        }
+    public function readSpecificSheet($sheetName,$type){
+        // if($file == null){
+        //     show_error("Can't Read Excel File",500);
+        // }
+        $file = '/Users/random/Desktop/Playground/Simprakerin/uploads/Data_PKL_MO13.xlsx';
         $reader = IOFactory::createReader($type);
         /**  Load $inputFileName to a Spreadsheet Object  **/
         $reader->setLoadSheetsOnly($sheetName);

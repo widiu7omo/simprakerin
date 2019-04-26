@@ -12,12 +12,14 @@ class Ajax extends CI_Controller {
         $this->load->helper('upload_helper');
     }
     public function initImport(){
-        $data = do_upload();
-        $file = $data['upload_data'];
-        $excel = new Excel;
-        $type = ucfirst(substr($file['file_ext'],1));
-        $sheetNames = $excel->readSheetName($file['full_path'],$type);
-        echo json_encode($sheetNames);
+        $data = do_upload('file');
+        // $file = $data['upload_data'];
+        // // var_dump($file);
+        // $excel = new Excel;
+        // $type = ucfirst(substr($file['file_ext'],1));
+        // $sheetNames = $excel->readSheetName($file['full_path'],$type);
+        //inject full path
+        echo json_encode(array('status'=>'success'));
 
         // $excel = new Excel;
         // $type = ucfirst(substr($file['file_ext'],1));
