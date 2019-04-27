@@ -9,8 +9,14 @@ class Akun_model extends CI_Model {
     public $username;
     public $password;
     //add parameter here
-
-
+    
+    public function __construct()
+    {
+        parent::__construct();
+        //Do your magic here
+        $this->load->library('encrypt');
+    }
+    
     public function rules(){
         return[
             [
@@ -34,12 +40,25 @@ class Akun_model extends CI_Model {
         return $this->db->get_where($this->_table,[$this->_primary_key=>$id])->row();
     }
 
+    public function getAccount($akun){
+        $result = null;
+        // var_dump('reading');
+        //why two, cause akun require only username and password
+        if(count($akun) == 2){
+            $result = $this->db->select(array('tb_akun.username as id','tb_master_level.nama_master_level as level'))
+            ->from('tb_akun')
+            ->join('tb_level','tb_akun.username = tb_level.username','inner')
+            ->join('tb_master_level','tb_level.id_master_level = tb_master_level.id_master_level')
+            ->where($akun)->get()->row();
+        }
+        return $result;
+    }
     public function insert(){
 
         $post = $this->input->post();
 
         $this->username = $post['username'];
-        $this->password = $post['password'];
+        $this->password = $this->encrypt->encode($post['password']);
         //add parameter here
         $this->db->insert($this->_table,$this);
     }
@@ -49,7 +68,7 @@ class Akun_model extends CI_Model {
         foreach($datas as $data){
             array_push($createdAccount,[
                 'username'=>$data->{$dataName},
-                'password'=>$data->{$dataName},
+                'password'=>$this->encrypt->encode($data->{$dataName}),
             ]);
         }
         return $createdAccount;
@@ -62,7 +81,9 @@ class Akun_model extends CI_Model {
                 //inject new index with same value
                 $data->{$replacer['new']} = $data->{$replacer['old']};
                 //delete old index
-                unset($data->{$replacer['old']});
+                if(!$replacer['keep']){
+                    unset($data->{$replacer['old']});
+                }
                 if(count($addtionalUnset) != 0){
                     foreach($addtionalUnset as $unset){
                         unset($data->{$unset});
@@ -92,7 +113,10 @@ class Akun_model extends CI_Model {
         switch($importFor){
             case 'mahasiswa':
             $key = 'nim';
-            $replacers = array(['old'=>'nama','new'=>'nama_mahasiswa']);
+            $replacers = array(
+                ['old'=>'nama','new'=>'nama_mahasiswa','keep'=>false],
+                ['old'=>'nim','new'=>'username','keep'=>true]
+            );
             $addtionalTable = 'tb_mahasiswa';
             $addtionalTable2 = 'tb_level';
             break;
@@ -110,13 +134,13 @@ class Akun_model extends CI_Model {
         //status == TRUE,do insert to addtional Table
         if($status != false){
             $generatedDataMhs = $this->match_data($batchData,$addtionalDatas,$replacers);
-            // var_dump($generatedData);
             //insert batch to mahasiswa
             $addtionalStatus = $this->db->insert_batch($addtionalTable,$generatedDataMhs);
             //insert batch to level
             //from batch nama we change, nim to username, and inject id master level
             $idLevelMhs = masterdata('tb_master_level',['nama_master_level'=>'mahasiswa']);
             $addtionalDataLevel['id_master_level'] = $idLevelMhs->id_master_level;
+            //define unset column
             $unsetData = ['id_program_studi','id_tahun_akademik','nama_mahasiswa'];
             $generatedDataLevel = $this->match_data($batchData,$addtionalDataLevel,[['old'=>'nim','new'=>'username']],$unsetData);
             $this->db->insert_batch($addtionalTable2,$generatedDataLevel);

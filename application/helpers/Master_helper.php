@@ -3,12 +3,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 if ( ! function_exists('masterdata'))
 {
-    function masterdata($table,$where = null)
+    function masterdata($table,$where = null,$select = null)
     {
         $ci=& get_instance();
         if($where != null){
             return $ci->db->get_where($table,$where)->row();
         }
+        
         return $ci->db->get($table)->result();
     }   
     function getCurrentTahun(){

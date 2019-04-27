@@ -10,7 +10,7 @@ class Dashboard extends CI_Controller {
         //Do your magic here
         // $this->load->model('Model_dashboard');
     }
-    
+    //dashboard admin
     public function index()
     {
         $this->load->view('admin/dashboard');
