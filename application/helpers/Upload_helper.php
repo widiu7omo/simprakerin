@@ -1,7 +1,7 @@
 <?php 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-if ( ! function_exists('masterdata'))
+if ( ! function_exists('do_upload'))
 {
     function do_upload(){
         $ci=& get_instance();
