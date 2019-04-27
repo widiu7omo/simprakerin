@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 // $config['base_url'] = 'http://simprakerin.dio';
 //server
-$config['base_url'] = APPPATH;
+$config['base_url'] = 'https://simprakerin.herokuapp.com';
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +37,7 @@ $config['base_url'] = APPPATH;
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------

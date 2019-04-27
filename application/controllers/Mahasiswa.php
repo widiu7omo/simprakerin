@@ -9,7 +9,7 @@ class Mahasiswa extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper('upload');
+        $this->load->helper('upload_helper');
         $this->load->model('mahasiswa_model');
         $this->load->model('akun_model');
         $this->load->library('form_validation');
