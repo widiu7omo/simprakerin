@@ -5,6 +5,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
+		var_dump(base_url());
 		$this->load->view('freeuser');
 	}
 }
