@@ -199,6 +199,7 @@
 	</div>
 	<!-- Scripts PHP-->
 	<?php $this->load->view('admin/_partials/modal.php');?>
+	<?php $this->load->view('admin/_partials/loading.php'); ?>
 	<?php $this->load->view('admin/_partials/js.php');?>
 	<script src="<?php echo base_url('assets/vendor/js-xlsx/dist/xlsx.full.min.js') ?>"></script>
 	<script>
@@ -361,6 +362,9 @@
 		function doImport() {
 			console.log(workbook)
 			console.log(filteredData)
+			console.log('show modal')
+			$('#loadingModal').modal({backdrop: 'static', keyboard: false})
+			$('#loadingModal').modal('show')
 			$('#btn_import').prop('disabled', true)
 			$.ajax({
 				url: '<?php echo site_url('mahasiswa/import') ?>',
@@ -373,6 +377,7 @@
 				},
 				success: (data) => {
 					$('#btn_import').prop('disabled', false)
+					$('#loadingModal').modal('hide')
 					console.log(data)
 					location.reload()
 				},

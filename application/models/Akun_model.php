@@ -44,8 +44,8 @@ class Akun_model extends CI_Model {
         $result = null;
         // var_dump('reading');
         //why two, cause akun require only username and password
-        if(count($akun) == 2){
-            $result = $this->db->select(array('tb_akun.username as id','tb_master_level.nama_master_level as level'))
+        if(count($akun) == 1){
+            $result = $this->db->select(array('tb_akun.username as id','tb_master_level.nama_master_level as level','tb_akun.password as password'))
             ->from('tb_akun')
             ->join('tb_level','tb_akun.username = tb_level.username','inner')
             ->join('tb_master_level','tb_level.id_master_level = tb_master_level.id_master_level')
@@ -58,17 +58,18 @@ class Akun_model extends CI_Model {
         $post = $this->input->post();
 
         $this->username = $post['username'];
-        $this->password = $this->encrypt->encode($post['password']);
+        $this->password = password_hash($post['password'],PASSWORD_DEFAULT);
         //add parameter here
         $this->db->insert($this->_table,$this);
     }
 
     public function make_account($datas = [],$dataName){
         $createdAccount = [];
+        ini_set('max_execution_time', 120); 
         foreach($datas as $data){
             array_push($createdAccount,[
                 'username'=>$data->{$dataName},
-                'password'=>$this->encrypt->encode($data->{$dataName}),
+                'password'=>password_hash($data->{$dataName},PASSWORD_DEFAULT),
             ]);
         }
         return $createdAccount;
@@ -119,6 +120,7 @@ class Akun_model extends CI_Model {
             );
             $addtionalTable = 'tb_mahasiswa';
             $addtionalTable2 = 'tb_level';
+            $addtionalTable3 = 'tb_notification';
             break;
             case 'pegawai':
             $key = 'nip';
@@ -142,8 +144,15 @@ class Akun_model extends CI_Model {
             $addtionalDataLevel['id_master_level'] = $idLevelMhs->id_master_level;
             //define unset column
             $unsetData = ['id_program_studi','id_tahun_akademik','nama_mahasiswa'];
-            $generatedDataLevel = $this->match_data($batchData,$addtionalDataLevel,[['old'=>'nim','new'=>'username']],$unsetData);
+            $generatedDataLevel = $this->match_data($batchData,$addtionalDataLevel,[['old'=>'nim','new'=>'username','keep'=>false]],$unsetData);
             $this->db->insert_batch($addtionalTable2,$generatedDataLevel);
+            //set notification for user
+            $addtionalDataNotif['pengirim'] = $this->session->userdata('id')?$this->session->userdata('id'):null;
+            $addtionalDataNotif['pesan'] = 'Silahkan melengkapi profil terlebih dahulu untuk bisa mengajukan permohonan magang';
+            $addtionalDataNotif['hal'] = 'profil';
+            $unsetData = ['id_master_level'];
+            $generatedDataNotif = $this->match_data($batchData,$addtionalDataNotif,[['old'=>'username','new'=>'penerima','keep'=>false]],$unsetData);
+            $this->db->insert_batch($addtionalTable3,$generatedDataNotif);
             $statusImport[$primaryTable] = $status;
             if($addtionalStatus != false){
                 $statusImport[$addtionalTable] = $addtionalStatus;

@@ -23,9 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-// $config['base_url'] = 'http://simprakerin.dio';
+$config['base_url'] = 'http://simprakerin.dio';
 //server
-$config['base_url'] = 'https://simprakerin.herokuapp.com';
+// $config['base_url'] = 'https://simprakerin.herokuapp.com';
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +66,7 @@ $config['uri_protocol']	= 'REQUEST_URI';
 |
 | https://codeigniter.com/user_guide/general/urls.html
 */
-$config['url_suffix'] = '';
+$config['url_suffix'] = '.prx';
 
 /*
 |--------------------------------------------------------------------------

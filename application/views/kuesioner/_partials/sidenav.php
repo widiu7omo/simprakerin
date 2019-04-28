@@ -3,7 +3,7 @@
       <!-- Brand -->
       <div class="sidenav-header d-flex align-items-center">
         <a class="navbar-brand" href="../../pages/dashboards/dashboard.html">
-            <img src="<?php echo base_url('assets/img/brand/simblue.png') ?> " class="navbar-brand-img" alt="...">
+            <img src="<?php echo base_url('assets/img/brand/blue.png') ?> " class="navbar-brand-img" alt="...">
         </a>
         <div class="ml-auto">
           <!-- Sidenav toggler -->

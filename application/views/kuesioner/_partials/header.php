@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Prakerin | <?php echo ucfirst($this->uri->segment(1)); ?></title>
+    <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
     <!-- Favicon -->
     <link href="<?php echo base_url('assets/img/brand/favicon.png') ?>" rel="icon" type="image/png">
     <!-- Fonts -->
@@ -18,5 +18,3 @@
     <!-- Argon CSS -->
     <link type="text/css" href="<?php echo base_url('assets/css/argonpro.css') ?>" rel="stylesheet">
 </head>
-<?php //var_dump($this->session->userdata('id')) ?>
-<?php //var_dump($this->session->userdata('level')) ?>

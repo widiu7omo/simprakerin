@@ -5,7 +5,6 @@
 <script src="<?php echo base_url('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/lavalamp/js/jquery.lavalamp.min.js') ?>"></script>
 <!-- Optional JS -->
-<script src="<?php echo base_url('assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') ?>"></script>
@@ -18,4 +17,9 @@
 <script src="<?php echo base_url('assets/vendor/select2/select2.min.js') ?>"></script>
 <!-- Argon JS -->
 <script src="<?php echo base_url('assets/js/argonpro.js') ?>"></script>
-
+<script>
+function deleteConfirm(url){
+	$('#btn-delete').attr('href', url);
+	$('#deleteModal').modal();
+}
+</script>

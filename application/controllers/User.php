@@ -7,6 +7,8 @@ class User extends CI_Controller {
         $this->load->model('mahasiswa_model');
         $this->load->model('pegawai_model');
         $this->load->library('form_validation');
+        $this->load->helper('notification_helper');
+        
     }
     //dashboard user
     public function index()
@@ -14,18 +16,79 @@ class User extends CI_Controller {
         $level = $this->session->userdata('level');
         switch($level){
             case 'mahasiswa':
+            $data['menus'] = array(
+                array('name'=>'SIG Perusahaan',
+                    'href'=>'https://sig.prakerin.politala.ac.id',
+                    'icon'=>'ni ni-square-pin',
+                    'desc'=>'Sistem Informasi Pemetaan Mahasiswa yang melaksanakan Praktik Kerja Industri Politeknik Negeri Tanah Laut'),
+                array('name'=>'Kuesioner Perusahaan',
+                    'href'=>site_url('kuesioner?m=mhs'),
+                    'icon'=>'ni ni-single-copy-04',
+                    'desc'=>'Lakukan review tempat magangmu, supaya adik kelasmu memperoleh refensi bagus')
+            );
             $data['mahasiswa'] = $this->mahasiswa_model->getById();
-            $this->load->view('user/dashboard');
             break;
             case 'dosen':
+            $data['menus'] = array(
+                array('name'=>'Monev Prakerin',
+                    'href'=>'https://monev.prakerin.politala.ac.id',
+                    'desc'=>'Aplikasi monitoring tempat Praktik kerja lapangan'),
+                array('name'=>'Kuesioner Dosen',
+                    'href'=>site_url('kuesioner?m=dsn'),
+                    'desc'=>'Kuesioner bagi dosen tentang bla bla bla')
+            );
             $data['dosen'] = $this->pegawai_model->getById();
             break;
-            default: redirect(site_url('welcome'));//@TODO:change this, clean code
+            default: $data['menus'] = []; redirect(site_url('main'));//@TODO:change this, clean code
         }
-        if($this->session->userdata('level') == 'mahasiswa'){
-            
+        $this->load->view('user/dashboard',$data);
+    }
+    public function profile(){
+        $level = $this->session->userdata('level');
+        $id = $this->session->userdata('id');
+        switch($level){
+            case 'mahasiswa':
+            $data['profile'] = $this->mahasiswa_model->getById($id);
+            break;
+            case 'dosen':
+            $data['profile'] = $this->pegawai_model->getById($id);
+            break;
+            default: $data['profile'] = null;
         }
-        
+        $this->load->view('user/profile',$data);
+    }
+    public function editprofile(){
+        $level = $this->session->userdata('level');
+        $id = $this->session->userdata('id');
+        switch($level){
+            case 'mahasiswa':
+            if (!isset($id)) redirect('prodi');
+            $mahasiswa = $this->mahasiswa_model;
+            $validation = $this->form_validation;
+            $validation->set_rules($mahasiswa->rules());
+            if ($validation->run()) {
+                $mahasiswa->update();
+                update_notification('read','profil',$id);
+                $this->session->set_flashdata('status', 'Berhasil dirubah');
+
+            }
+            else{
+                $this->session->set_flashdata('status', 'Gagal Mengubah');
+            }
+            break;
+            case 'dosen':
+            $data['profile'] = $this->pegawai_model->getById($id);
+            break;
+            default: $data['profile'] = null;
+        }
+        redirect(site_url('user/profile'));
+    }
+    public function logout(){
+        session_destroy();
+        redirect(site_url('main'));
+    }
+    public function login(){
+
     }
     public function create(){
         $changeHere = $this->changeHere;
@@ -42,6 +105,7 @@ class User extends CI_Controller {
         $changeHere = $this->changeHere;
         $validation = $this->form_validation;
         $validation->set_rules($changeHere->rules());
+        
         if ($validation->run()) {
             $changeHere->update();
             $this->session->set_flashdata('success', 'Berhasil disimpan');

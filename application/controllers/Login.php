@@ -18,11 +18,11 @@ class Login extends CI_Controller {
         $get = $this->input->get();
         if(isset($get['in'])){
             $akun['tb_akun.username'] = $post['username'];
-            $akun['tb_akun.password'] = $post['password'];
-            $isValidAkun = $this->checkAccount($akun);
+            $password = $post['password'];
+            $isValidAkun = $this->checkAccount($akun,$password);
             // var_dump($isValidAkun);
             //must exactly only one account, when it's emtpy or more than one,it will throw to exception
-            if(count($isValidAkun) == 1){
+            if($isValidAkun->status){
                 $this->session->set_userdata('level',$isValidAkun->level);
                 $this->session->set_userdata('id',$isValidAkun->id);
                 redirect(site_url('main'));
@@ -44,8 +44,10 @@ class Login extends CI_Controller {
     public function checkLogin($username){
         return masterdata('tb_akun',['username'=>$username]);
     }
-    public function checkAccount($akun){
-        return $this->akun_model->getAccount($akun);
+    public function checkAccount($akun,$password){
+        $result = $this->akun_model->getAccount($akun);
+        $result->status = password_verify($password,$result->password);
+        return $result;
     }
 
 }

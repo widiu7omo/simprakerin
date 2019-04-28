@@ -26842,3 +26842,9 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
 	opacity: .5;
 	z-index: 2;
 }
+.badge-top-right{
+    position: absolute;
+    right: 6px;
+    top: -3px;
+}
+}
