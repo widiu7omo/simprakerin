@@ -27,6 +27,11 @@ class Mahasiswa extends MY_Controller {
                 $data['mahasiswas'] = $this->mahasiswa_model->getAll();
                 $this->load->view('admin/mahasiswa_sidang',$data);
                 break;
+            case 'pengajuan':
+                # code...
+                $data['mahasiswas'] = $this->mahasiswa_model->getAll();
+                $this->load->view('admin/mahasiswa_pengajuan',$data);
+                break;
             default:
                 # code...
                 $this->load->view('admin/mahasiswa');

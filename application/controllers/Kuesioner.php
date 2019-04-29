@@ -7,7 +7,7 @@ class Kuesioner extends CI_Controller {
     public function index()
     {
         $get = $this->input->get();
-        if(isset($get['for'])){
+        if(isset($get['m'])){
             $this->load->view('kuesioner/kuesioner_mahasiswa');
         }
     }

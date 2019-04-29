@@ -44,12 +44,12 @@ class Akun_model extends CI_Model {
         $result = null;
         // var_dump('reading');
         //why two, cause akun require only username and password
-        if(count($akun) == 1){
+        if(count($akun) != 0){
             $result = $this->db->select(array('tb_akun.username as id','tb_master_level.nama_master_level as level','tb_akun.password as password'))
             ->from('tb_akun')
             ->join('tb_level','tb_akun.username = tb_level.username','inner')
             ->join('tb_master_level','tb_level.id_master_level = tb_master_level.id_master_level')
-            ->where($akun)->get()->row();
+            ->where($akun)->get()->result();
         }
         return $result;
     }

@@ -100,9 +100,21 @@
 		</div>
 	</div>
 	<!-- Footer -->
+	<?php 
+	$data['akun'] = $this->input->post();
+	$this->load->view('_partials/multilevel',$data); ?>
+
 	<?php  $this->load->view('_partials/footer');?>
 	<!-- Argon Scripts -->
 	<?php $this->load->view('_partials/js');?>
+	<?php if($this->session->flashdata('multilevel')): ?>
+	<script>
+	(function(){
+		$('#levelModal').modal({backdrop: 'static', keyboard: false})
+		$('#levelModal').modal('show')
+	}())
+	</script>
+	<?php endif; ?>
 	<script>
 		$('#username').focus(() => {
 			console.log('blur')

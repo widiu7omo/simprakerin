@@ -22,7 +22,7 @@ class User extends CI_Controller {
                     'icon'=>'ni ni-square-pin',
                     'desc'=>'Sistem Informasi Pemetaan Mahasiswa yang melaksanakan Praktik Kerja Industri Politeknik Negeri Tanah Laut'),
                 array('name'=>'Kuesioner Perusahaan',
-                    'href'=>site_url('kuesioner?m=mhs'),
+                    'href'=>site_url('user/kuesioner?m=mhs'),
                     'icon'=>'ni ni-single-copy-04',
                     'desc'=>'Lakukan review tempat magangmu, supaya adik kelasmu memperoleh refensi bagus')
             );
@@ -118,6 +118,12 @@ class User extends CI_Controller {
         if (!isset($id)) show_404();
         if ($this->changeHere->delete($id)) {
             redirect(site_url('changeHere'));
+        }
+    }
+    public function kuesioner(){
+        $get = $this->input->get();
+        if(isset($get['m'])){
+            $this->load->view('user/kuesioner');
         }
     }
 } ?>
