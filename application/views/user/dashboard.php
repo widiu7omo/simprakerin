@@ -3,7 +3,6 @@
 
 <!-- Head PHP -->
 <?php  $this->load->view('user/_partials/header.php');?>
-
 <body class="g-sidenav-hidden">
 	<!-- Sidenav PHP-->
 	<?php $this->load->view('user/_partials/sidenav.php');?>

@@ -124,11 +124,11 @@
 	<?php $this->load->view('admin/_partials/modal.php');?>
 	<?php $this->load->view('admin/_partials/js.php');?>
 	<?php
-	require APPPATH."libraries/hotreloader.php";
-	$reloader = new HotReloader();
-	$reloader->setRoot(__DIR__);
-	$reloader->currentConfig();
-	$reloader->init();
+//	require APPPATH."libraries/hotreloader.php";
+//	$reloader = new HotReloader();
+//	$reloader->setRoot(__DIR__);
+//	$reloader->currentConfig();
+//	$reloader->init();
 	?>
 	<!-- Demo JS - remove this in your project -->
 	<!-- <script src="../assets/js/demo.min.js"></script> -->

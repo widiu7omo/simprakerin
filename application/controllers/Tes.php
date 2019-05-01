@@ -6,9 +6,16 @@ class Tes extends CI_Controller {
 
     public function index()
     {
-        $formGenerator = new FormGenerator;
-        FormGenerator::hey();
-        echo $formGenerator->input('input','perusahaan',null,false);
+    	$options = array(
+    		array('name'=>'Zebra','value'=>'zebra'),
+	        array('name'=>'Lion','value'=>'lion'));
+        $formGenerator = new FormGenerator();
+        $formGenerator->initialize('perusahaan','form-group','select',null,$options);
+        echo $formGenerator->result();
+        $formGenerator = new FormGenerator();
+        $formGenerator->initialize('radio','form-group','text','password',null);
+        echo $formGenerator->result();
+
     }
 
 }

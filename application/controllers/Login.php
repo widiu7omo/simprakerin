@@ -35,6 +35,11 @@ class Login extends CI_Controller {
                 if(isset($isValidAkun['status']) && $isValidAkun == true){
                     $this->session->set_userdata('level',$isValidAkun[0]->level);
                     $this->session->set_userdata('id',$isValidAkun[0]->id);
+                    //add program studi to session if user is mahasiswa
+                    if($isValidAkun[0]->level == 'mahasiswa'){
+                        $programstudi = masterdata( 'tb_mahasiswa',['nim'=>$isValidAkun[0]->id],'id_program_studi');
+                        $this->session->set_userdata( 'prodi',$programstudi->id_program_studi );
+                    }
                     redirect(site_url('main'));
                 }
                 else {
@@ -52,6 +57,10 @@ class Login extends CI_Controller {
             if($isValidAkun['status']){
                 $this->session->set_userdata('level',$isValidAkun[0]->level);
                 $this->session->set_userdata('id',$isValidAkun[0]->id);
+                if($isValidAkun[0]->level == 'mahasiswa'){
+                    $programstudi = masterdata( 'tb_mahasiswa',['nim'=>$isValidAkun[0]->id],'id_program_studi');
+                    $this->session->set_userdata( 'prodi',$programstudi->id_program_studi );
+                }
                 redirect(site_url('main'));
                 return;
             }

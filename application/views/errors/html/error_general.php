@@ -1,64 +1,131 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Error</title>
-<style type="text/css">
+    <meta charset="utf-8">
+    <title>Error</title>
+    <style type="text/css">
+        @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono|Montserrat:700");
 
-::selection { background-color: #E13300; color: white; }
-::-moz-selection { background-color: #E13300; color: white; }
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+            box-sizing: border-box;
+            color: inherit;
+        }
 
-body {
-	background-color: #fff;
-	margin: 40px;
-	font: 13px/20px normal Helvetica, Arial, sans-serif;
-	color: #4F5155;
-}
+        body {
+            background-image: linear-gradient(120deg, #4f0088 0%, #000000 100%);
+            height: 100vh;
+        }
 
-a {
-	color: #003399;
-	background-color: transparent;
-	font-weight: normal;
-}
+        h1 {
+            font-size: 45vw;
+            text-align: center;
+            position: fixed;
+            width: 100vw;
+            z-index: 1;
+            color: #ffffff26;
+            text-shadow: 0 0 50px rgba(0, 0, 0, 0.07);
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: "Montserrat", monospace;
+        }
 
-h1 {
-	color: #444;
-	background-color: transparent;
-	border-bottom: 1px solid #D0D0D0;
-	font-size: 19px;
-	font-weight: normal;
-	margin: 0 0 14px 0;
-	padding: 14px 15px 10px 15px;
-}
+        div {
+            background: rgba(0, 0, 0, 0);
+            width: 70vw;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0 auto;
+            padding: 30px 30px 10px;
+            box-shadow: 0 0 150px -20px rgba(0, 0, 0, 0.5);
+            z-index: 3;
+        }
 
-code {
-	font-family: Consolas, Monaco, Courier New, Courier, monospace;
-	font-size: 12px;
-	background-color: #f9f9f9;
-	border: 1px solid #D0D0D0;
-	color: #002166;
-	display: block;
-	margin: 14px 0 14px 0;
-	padding: 12px 10px 12px 10px;
-}
+        P {
+            font-family: "Share Tech Mono", monospace;
+            color: #f5f5f5;
+            margin: 0 0 20px;
+            font-size: 17px;
+            line-height: 1.2;
+        }
 
-#container {
-	margin: 10px;
-	border: 1px solid #D0D0D0;
-	box-shadow: 0 0 8px #D0D0D0;
-}
+        span {
+            color: #f0c674;
+        }
 
-p {
-	margin: 12px 15px 12px 15px;
-}
-</style>
+        i {
+            color: #8abeb7;
+        }
+
+        div a {
+            text-decoration: none;
+        }
+
+        b {
+            color: #81a2be;
+        }
+
+        a.avatar {
+            position: fixed;
+            bottom: 15px;
+            right: -100px;
+            animation: slide 0.5s 4.5s forwards;
+            display: block;
+            z-index: 4
+        }
+
+        a.avatar img {
+            border-radius: 100%;
+            width: 44px;
+            border: 2px solid white;
+        }
+
+        @keyframes slide {
+            from {
+                right: -100px;
+                transform: rotate(360deg);
+                opacity: 0;
+            }
+            to {
+                right: 15px;
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+    </style>
 </head>
 <body>
-	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
-	</div>
+<h1><?php echo $status_code ?></h1>
+<div>
+    <p><span>ERROR MESSAGE</span>: <i><?php echo $heading; ?></i></p>
+    <p><span>ERROR CODE</span>: <i>HTTP <?php echo $status_code ?> Forbidden</i></p>
+    <p><span>ERROR DESCRIPTION</span>: <i><?php echo $message; ?></i></p>
+</div>
+<script>
+    var str = document.getElementsByTagName('div')[0].innerHTML.toString();
+    var i = 0;
+    document.getElementsByTagName('div')[0].innerHTML = "";
+
+    setTimeout(function () {
+        var se = setInterval(function () {
+            i++;
+            document.getElementsByTagName('div')[0].innerHTML = str.slice(0, i) + "|";
+            if (i == str.length) {
+                clearInterval(se);
+                document.getElementsByTagName('div')[0].innerHTML = str;
+            }
+        }, 10);
+    }, 0);
+
+</script>
 </body>
 </html>
