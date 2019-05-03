@@ -48,21 +48,21 @@
                         <img class="card-img-top" src="holder.js/100px180/" alt="">
                         <div class="card-body">
                             <h4 class="card-title">Status Pengajuan Magang</h4>
-                            <h4 class="h5 small">Tujuan:&nbsp; <?php echo $exist?$approval[0]->nama_perusahaan:'Belum mengajukan'?></h4>
-                            <h4 class="h5 small">Status:&nbsp; <?php echo $exist?'Di'.$approval[0]->status:'N/A'?></h4>
+                            <h4 class="h5 small">Tujuan:&nbsp; <?php echo $exist?(isset($approval[0])?$approval[0]->nama_perusahaan:null):'Belum mengajukan'?></h4>
+                            <h4 class="h5 small">Status:&nbsp; <?php echo $exist?'Di'.(isset($approval[0])?$approval[0]->status:null):'N/A'?></h4>
                             <div class="progress-wrapper">
                                 <div class="progress-info">
                                     <div class="progress-label">
-                                        <span><?php echo $exist?$approval[0]->nama_perusahaan:'Belum mengajukan'?></span>
+                                        <span><?php echo $exist?(isset($approval[0])?$approval[0]->nama_perusahaan:null):'Belum mengajukan'?></span>
                                         <span>Diterima</span>
                                         <span>Ditolak</span>
                                     </div>
                                     <div class="progress-percentage">
-                                        <span><?php echo getProgress( $approval[0]->status)?>%</span>
+                                        <span><?php echo getProgress(isset($approval[0])?$approval[0]->status:null)?>%</span>
                                     </div>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-default" role="progressbar" aria-valuenow="<?php echo getProgress( $approval[0]->status)?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getProgress( $approval[0]->status)?>%;"></div>
+                                    <div class="progress-bar bg-default" role="progressbar" aria-valuenow="<?php echo getProgress( isset($approval[0])?$approval[0]->status:null)?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getProgress( isset($approval[0])?$approval[0]->status:null)?>%;"></div>
                                 </div>
                             </div>
 
