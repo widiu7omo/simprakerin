@@ -137,7 +137,7 @@ class Mahasiswa extends MY_Controller {
 			foreach ($getPenerima as $penerima){
 				//set notification and set status permohonan
 				set_notification( $level, $penerima->nim, 'Surat sudah ditandatangani, siap untuk dikirimkan', 'surat siap','magang?m=pengajuan');
-
+				$this->pengajuan_model->update_multi(['status'=>'kirim'],['id_perusahaan'=>$id]);
 			}
 
 			$this->session->set_flashdata( 'status', 'Informasi surat siap sudah dikirim' );

@@ -59,17 +59,20 @@
 									<p class="text-sm mb-0">
 										Daftar Mahasiswa yang mengajukan permohonan magang
 									</p>
-                                    <button class="btn btn-sm btn-invert btn-outline-light"></button><small>Permohonan masuk</small>
-                                    <button class="btn btn-sm btn-info"></button><small>Permohonan dicetak</small>                                    <button class="btn btn-sm btn-success"></button><small>Permohonan diterima</small>
-                                    <button class="btn btn-sm btn-success"></button><small>Permohonan diterima</small>
-                                    <button class="btn btn-sm btn-danger"></button><small>Permohonan ditolak</small>
+                                    <small>* Keterangan</small>
+                                    <br>
+                                    <button class="btn btn-sm btn-invert btn-outline-light"></button><small>Masuk</small>
+                                    <button class="btn btn-sm btn-primary"></button><small>Dicetak</small>
+                                    <button class="btn btn-sm btn-info"></button><small>Dikirim</small>
+                                    <button class="btn btn-sm btn-success"></button><small>Diterima</small>
+                                    <button class="btn btn-sm btn-danger"></button><small>Ditolak</small>
 
 								</div>
-								<div class="col-4 text-right">
-									<a href="<?php echo site_url('mahasiswa/create') ?>"
-										class="btn btn-sm btn-primary">Add
-										Mahasiswa</a>
-								</div>
+<!--								<div class="col-4 text-right">-->
+<!--									<a href="--><?php //echo site_url('mahasiswa/create') ?><!--"-->
+<!--										class="btn btn-sm btn-primary">Add-->
+<!--										Mahasiswa</a>-->
+<!--								</div>-->
 							</div>
 						</div>
 						<div class="table-responsive py-4">
@@ -155,6 +158,9 @@
                     // console.log(data.mahasiswa)
                     //take first array, cz every company have mahasiswa intern. another company with zero mahasiswa, already filter on server side
                     if (data.mahasiswa[0].status === 'cetak') {
+                        $(row).addClass('text-white bg-primary');
+                    }
+                    if (data.mahasiswa[0].status === 'kirim'){
                         $(row).addClass('text-white bg-info');
                     }
                     if (data.mahasiswa[0].status === 'tolak'){

@@ -11,10 +11,10 @@ if ( ! function_exists( 'getProgress' ) ) {
 				$percent = 20;
 				break;
 			case 'cetak':
-				$percent = 30;
+				$percent = 50;
 				break;
 			case 'kirim':
-				$percent = 50;
+				$percent = 75;
 				break;
 			case 'terima':
 				$percent = 99;
