@@ -10,7 +10,7 @@ defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
 class Mahasiswa extends MY_Controller {
 	public function __construct() {
 		parent::__construct();
-		$this->load->helper( [ 'upload', 'master','notification' ] );
+		$this->load->helper( array( 'upload', 'master','notification' ) );
 		$this->load->model( [ 'mahasiswa_model', 'pengajuan_model', 'akun_model' ] );
 		$this->load->library( 'form_validation' );
 		//middleware

@@ -14,7 +14,7 @@ class Akun_model extends CI_Model {
     {
         parent::__construct();
         //Do your magic here
-	    $this->load->helper('master');
+	    $this->load->helper(array('master'));
 
     }
     

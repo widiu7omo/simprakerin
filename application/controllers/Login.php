@@ -9,7 +9,7 @@ class Login extends CI_Controller {
         parent::__construct();
         //Do your magic here
         $this->load->model('akun_model');
-        $this->load->helper('master');
+        $this->load->helper(array('master'));
     }
     
     public function index()
