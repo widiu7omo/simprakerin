@@ -2,6 +2,7 @@
 if ( ! defined( 'BASEPATH' ) ) {
 	exit( 'No direct script access allowed' );
 }
+//change name to snake case
 
 if ( ! function_exists( 'getProgress' ) ) {
 	function getProgress( $status ) {

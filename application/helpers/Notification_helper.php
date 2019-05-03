@@ -1,6 +1,6 @@
 <?php 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+//change name to snake case
 if ( ! function_exists('count_notification'))
 {
     function count_notification($receiver,$status = null){

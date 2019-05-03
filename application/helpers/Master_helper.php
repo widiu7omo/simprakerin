@@ -2,7 +2,7 @@
 if ( ! defined( 'BASEPATH' ) ) {
 	exit( 'No direct script access allowed' );
 }
-
+//change name to snake case
 if ( ! function_exists( 'masterdata' ) ) {
 	function masterdata( $table, $where = null, $select = null, $resultArray = false ) {
 		$ci =& get_instance();

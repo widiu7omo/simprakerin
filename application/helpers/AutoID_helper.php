@@ -1,6 +1,6 @@
 <?php 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+//change name to snake case
 if ( ! function_exists('generate_id'))
 {
     function generate_id($table,$primarykey,$defaultKey = null)

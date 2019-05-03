@@ -1,6 +1,7 @@
 <?php 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+//change name to snake case
 if ( ! function_exists('do_upload'))
 {
     function do_upload(){
