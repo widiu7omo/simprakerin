@@ -7,7 +7,7 @@ class User extends CI_Controller {
         $this->load->model('mahasiswa_model');
         $this->load->model('pegawai_model');
         $this->load->library('form_validation');
-        $this->load->helper('notification_helper');
+        $this->load->helper('notification');
         
     }
     //dashboard user

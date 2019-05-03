@@ -6,7 +6,7 @@ class TahunAkademik extends CI_Controller {//change class
         parent::__construct();
         $this->load->model('tahunakademik_model');
         $this->load->library('form_validation');
-        $this->load->helper('master_helper');
+        $this->load->helper('master');
     }
     public function index()
     {

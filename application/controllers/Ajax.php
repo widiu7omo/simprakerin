@@ -9,7 +9,7 @@ class Ajax extends CI_Controller {
         parent::__construct();
         $this->load->model('prodi_model');
         $this->load->library('form_validation');
-        $this->load->helper(['upload_helper','master']);
+        $this->load->helper(['upload','master']);
     }
     public function initImport(){
         $data = do_upload('file');
