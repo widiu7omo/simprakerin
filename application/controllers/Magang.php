@@ -8,6 +8,10 @@ class Magang extends CI_Controller {
 		parent::__construct();
 		$this->load->model(['perusahaan_model','pengajuan_model']);
 		$this->load->helper(['notification','master']);
+		!$this->session->userdata('level')?redirect(site_url('main')):null;
+		$id = $this->session->userdata('id');
+		$mahasiswa = masterdata( 'tb_mahasiswa',['nim'=>$id],['alamat_mhs','email_mhs','jenis_kelamin_mhs'],false);
+		($mahasiswa->alamat_mhs == null || $mahasiswa->email_mhs == null || $mahasiswa->jenis_kelamin_mhs == null)?redirect(site_url('user/profile')):null;
 		//Do your magic here
 	}
     public function index()
@@ -20,6 +24,10 @@ class Magang extends CI_Controller {
                     'href'=>site_url('magang?m=pengajuan'),
                     'icon'=>'fas fa-id-badge',
                     'desc'=>'Ajukan pengajuan magang untuk memilih tempat magang yang diinginkan'),
+	            array('name'=>'Pengajuan Perusahaan baru',
+	                  'href'=>site_url('magang?m=perusahaanbaru'),
+	                  'icon'=>'fas fa-star',
+	                  'desc'=>'Penilaian yang diperoleh dari tempat magang yang bersangkutan'),
                 array('name'=>'Informasi Perusahaan',
                     'href'=>site_url('magang?m=perusahaan'),
                     'icon'=>'fas fa-building',
@@ -27,7 +35,8 @@ class Magang extends CI_Controller {
                 array('name'=>'Penilaian',
                     'href'=>site_url('magang?m=penilaian'),
                     'icon'=>'fas fa-star',
-                    'desc'=>'Penilaian yang diperoleh dari tempat magang yang bersangkutan')
+                    'desc'=>'Penilaian yang diperoleh dari tempat magang yang bersangkutan'),
+
             );
             break;
             case 'dosen':
@@ -118,7 +127,8 @@ class Magang extends CI_Controller {
 			$pengajuan = $this->pengajuan_model;
 			if($pengajuan->insert()){
 				$pesan = $mahasiswa->nama_mahasiswa." ({$id})".' mengajukan permohonan magang';
-				set_notification($id ,'admin', $pesan, 'pengajuan magang');
+				$uri = 'mahasiswa?m=pengajuan';
+				set_notification($id ,'admin', $pesan, 'pengajuan magang',$uri);
 				$this->session->set_flashdata( 'status', ['message'=>'Pengajuan sedang diproses','type'=>'success'] );
 				}
 			else{

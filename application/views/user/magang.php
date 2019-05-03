@@ -24,7 +24,7 @@
 
 					<?php foreach($menus as $menu): ?>
 					<div class="col-xl-4 col-lg-6">
-						<div class="card card-stats mb-4 mb-xl-0 m">
+						<div class="card card-stats mb-4 mb-xl-0 my-3">
 							<a href="<?php echo $menu['href'] ?>">
 								<div class="card-body">
 									<div class="row">

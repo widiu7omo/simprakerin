@@ -59,9 +59,13 @@ class Pengajuan_model extends CI_Model {
 		return $this->db->insert( $this->_table, $this );
 	}
 
+	public function update_multi($data,$where){
+		//add parameter here
+		return $this->db->update( $this->_table, $data, $where);
+	}
 	public function update() {
 		$post = $this->input->post();
-
+		$get = $this->input->get();
 		$this->changeHere = $post['changeHere'];
 		//add parameter here
 		return $this->db->update( $this->_table, $this, [ $this->_primary_key => $post['changeHere'] ] );

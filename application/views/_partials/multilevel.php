@@ -1,5 +1,5 @@
 <?php $levels = $this->session->flashdata('multilevel');
-var_dump($levels);
+//var_dump($levels);
 ?>
 <form action="<?php echo site_url('login?in=multi') ?>" method="POST">
 	<div class="modal fade" id="levelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

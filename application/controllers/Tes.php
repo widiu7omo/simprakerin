@@ -1,7 +1,9 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 use Tools\FormGenerator;
+use Tools\WordGenerator;
 require(APPPATH.'libraries/FormGenerator.php');
+require(APPPATH.'libraries/WordGenerator.php');
 class Tes extends CI_Controller {
 
     public function index()
@@ -16,6 +18,10 @@ class Tes extends CI_Controller {
         $formGenerator->initialize('radio','form-group','text','password',null);
         echo $formGenerator->result();
 
+    }
+    public function docx(){
+		$wordGen = new WordGenerator;
+		$wordGen->create_surat('magang');
     }
 
 }

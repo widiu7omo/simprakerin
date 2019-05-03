@@ -22,103 +22,35 @@
 			<div class="header-body">
 				<!-- Card stats -->
 				<div class="row">
-					<div class="col-xl-3 col-lg-6">
-						<div class="card card-stats mb-4 mb-xl-0">
-							<a href="<?php echo site_url('mahasiswa?m=magang') ?>">
+					<?php foreach ($menus as $menu):?>
+					<div class="col-xl-4 col-lg-6 col-sm-12">
+						<div class="card card-stats mb-4 mb-xl-0 my-3">
+							<a href="<?php echo $menu['href'] ?>">
 								<div class="card-body">
 									<div class="row">
 										<div class="col">
-											<h5 class="card-title text-uppercase text-muted mb-0">Mahasiswa</h5>
-											<span class="h2 font-weight-bold mb-0">Magang</span>
+											<h5 class="card-title text-uppercase text-muted mb-0"><?php echo $this->uri->segment(1)?></h5>
+											<span class="h2 font-weight-bold mb-0"><?php echo $menu['name']?></span>
 										</div>
 										<div class="col-auto">
 											<div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-												<i class="fas fa-user-graduate"></i>
+												<i class="<?php echo $menu['icon']?>"></i>
 											</div>
 										</div>
 									</div>
 									<p class="mt-3 mb-0 text-muted text-sm">
-										<span class="text-wrap">Daftar mahasiswa yang berhak untuk melaksanakan
-											magang</span>
+										<span class="text-wrap"><?php echo $menu['desc']?></span>
 									</p>
 								</div>
 							</a>
 						</div>
 					</div>
-					<div class="col-xl-3 col-lg-6">
-						<div class="card card-stats mb-4 mb-xl-0">
-							<a href="<?php echo site_url('mahasiswa?m=sidang') ?>">
-								<div class="card-body">
-									<div class="row">
-										<div class="col">
-											<h5 class="card-title text-uppercase text-muted mb-0">Mahasiswa</h5>
-											<span class="h2 font-weight-bold mb-0">Sidang</span>
-										</div>
-										<div class="col-auto">
-											<div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-												<i class="fas fa-chalkboard-teacher"></i>
-											</div>
-										</div>
-									</div>
-									<p class="mt-3 mb-0 text-muted text-sm">
-										<span class="text-wrap">Mahasiswa yang berhak dan tidak berhak untuk
-											melaksanakan sidang</span>
-									</p>
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="col-xl-3 col-lg-6">
-						<div class="card card-stats mb-4 mb-xl-0">
-							<a href="<?php echo site_url('mahasiswa?m=pengajuan') ?>">
-								<div class="card-body">
-									<div class="row">
-										<div class="col">
-											<h5 class="card-title text-uppercase text-muted mb-0">Mahasiswa</h5>
-											<span class="h2 font-weight-bold mb-0">Pengajuan Magang</span>
-										</div>
-										<div class="col-auto">
-											<div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-												<i class="fas fa-users"></i>
-											</div>
-										</div>
-									</div>
-									<p class="mt-3 mb-0 text-muted text-sm">
-										<!-- <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i></span> -->
-										<span class="text-wrap">Daftar perserta pengajuan magang seluruh program
-											studi</span>
-									</p>
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="col-xl-3 col-lg-6">
-						<div class="card card-stats mb-4 mb-xl-0">
-							<div class="card-body">
-								<div class="row">
-									<div class="col">
-										<h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-										<span class="h2 font-weight-bold mb-0">49,65%</span>
-									</div>
-									<div class="col-auto">
-										<div class="icon icon-shape bg-info text-white rounded-circle shadow">
-											<i class="fas fa-percent"></i>
-										</div>
-									</div>
-								</div>
-								<p class="mt-3 mb-0 text-muted text-sm">
-									<span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-									<span class="text-nowrap">Since last month</span>
-								</p>
-							</div>
-						</div>
-					</div>
+					<?php endforeach;?>
 				</div>
 			</div>
 			<!-- Footer PHP -->
 			<?php $this->load->view('admin/_partials/footer.php');?>
 		</div>
-
 	</div>
 	<!-- Scripts PHP-->
 	<?php $this->load->view('admin/_partials/modal.php');?>

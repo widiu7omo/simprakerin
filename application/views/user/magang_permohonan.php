@@ -3,9 +3,9 @@
 
 <!-- Head PHP -->
 <?php $this->load->view( 'user/_partials/header.php' ); ?>
-<?php $this->load->helper('master');
-    $where['nim'] = $this->session->userdata('id');
-    $where['status'] = 'proses';
+<?php $this->load->helper(['master','progress']);
+    $nim = $this->session->userdata('id');
+    $where = "(status = 'proses' or status = 'terima' or status = 'cetak') AND nim = '{$nim}'";
     $join = ['tb_perusahaan','tb_perusahaan_sementara.id_perusahaan = tb_perusahaan.id_perusahaan','left outer'];
     $select = ['tb_perusahaan.nama_perusahaan','tb_perusahaan_sementara.status'];
     $approval = datajoin( 'tb_perusahaan_sementara', $where, $select,$join);
@@ -14,6 +14,17 @@
     if(count($approval) == 1 || count($approval) > 1){
         $exist = true;
     }
+    function getTempMhs($id){
+	    $joins[0] = ['tb_perusahaan','tb_perusahaan_sementara.id_perusahaan = tb_perusahaan.id_perusahaan','left outer'];
+	    $joins[1] = ['tb_mahasiswa','tb_perusahaan_sementara.nim = tb_mahasiswa.nim','left outer'];
+	    $select = ['nama_mahasiswa'];
+	    $where = "tb_perusahaan_sementara.id_perusahaan = {$id} 
+	              AND (tb_perusahaan_sementara.status = 'proses'
+	               OR tb_perusahaan_sementara.status = 'cetak'
+	               OR tb_perusahaan_sementara.status = 'terima')";
+        return datajoin( 'tb_perusahaan_sementara', $where, $select,$joins,null);
+    }
+
 ?>
 <body class="g-sidenav-hidden">
 <!-- Sidenav PHP-->
@@ -38,7 +49,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Status Pengajuan Magang</h4>
                             <h4 class="h5 small">Tujuan:&nbsp; <?php echo $exist?$approval[0]->nama_perusahaan:'Belum mengajukan'?></h4>
-                            <h4 class="h5 small">Status:&nbsp; <?php echo $exist?($approval[0]->status?'Diproses':''):'N/A'?></h4>
+                            <h4 class="h5 small">Status:&nbsp; <?php echo $exist?'Di'.$approval[0]->status:'N/A'?></h4>
                             <div class="progress-wrapper">
                                 <div class="progress-info">
                                     <div class="progress-label">
@@ -47,11 +58,11 @@
                                         <span>Ditolak</span>
                                     </div>
                                     <div class="progress-percentage">
-                                        <span>60%</span>
+                                        <span><?php echo getProgress( $approval[0]->status)?>%</span>
                                     </div>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-default" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                    <div class="progress-bar bg-default" role="progressbar" aria-valuenow="<?php echo getProgress( $approval[0]->status)?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getProgress( $approval[0]->status)?>%;"></div>
                                 </div>
                             </div>
 
@@ -91,7 +102,12 @@
                             </div>
                             <div class="card-body py-2">
                                 <p class="card-text mb-2"><?php echo $perusahaan->nama_perusahaan ?></p>
-                                <div class="h5 badge badge-danger">Status : Penuh</div>
+	                            <?php $tempMhs = getTempMhs($perusahaan->id_perusahaan);
+	                            $countTempMhs = (int) count($tempMhs);
+	                            $countKuota = (int) $perusahaan->kuota_pkl;
+	                            $diff = $countKuota-$countTempMhs;
+	                            ?>
+                                <div class="h5 badge badge-<?php echo $diff==0?'danger':($diff==1?'warning':'success')?>">Status : <?php echo $diff==0? 'Kuota Penuh':'Tersisa '.$diff.' Slot'?></div>
                                 <div class="accordion mb-2" id="accordionExample">
                                     <div class="card p-0 m-0 shadow-none">
                                         <div class="card-header border-0 p-0 m-0" id="headingOne"
@@ -104,9 +120,9 @@
                                              data-parent="#accordionExample">
                                             <div class="card-body p-0 m-0">
                                                 <ul class="my-0 py-0">
-                                                    <li class="my-0 py-0"><span class="small">Ayudya</span></li>
-                                                    <li class="my-0 py-0"><span class="small">Munaryo</span></li>
-                                                    <li></li>
+	                                                <?php foreach ($tempMhs as $temp_mh):?>
+                                                    <li class="my-0 py-0"><span class="small"><?php echo $temp_mh->nama_mahasiswa?></span></li>
+	                                                <?php endforeach;?>
                                                 </ul>
                                             </div>
                                         </div>
@@ -117,7 +133,7 @@
                                 <form action="<?php echo site_url( 'magang?m=pengajuan&q=i' ) ?>" method="post">
                                     <input type="hidden" name="id_perusahaan"
                                            value="<?php echo $perusahaan->id_perusahaan ?>">
-                                    <button style="display:<?php echo $exist?'none':'block';?>" type="submit" name="insert" class=" float-right btn btn-sm btn-primary">
+                                    <button style="display:<?php echo $exist?'none':($diff==0?'none':'block');?>" type="submit" name="insert" class=" float-right btn btn-sm btn-primary">
                                         Ajukan
                                     </button>
                                 </form>

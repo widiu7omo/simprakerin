@@ -63,7 +63,7 @@ $dataNotification = get_notification($this->session->userdata('id'),0);
 						<!-- List group -->
 						<div class="list-group list-group-flush">
                             <?php foreach($dataNotification as $notification): ?>
-							<a href="#!" class="list-group-item list-group-item-action">
+							<a href="<?php echo $notification->uri?site_url($notification->uri):'#'?>" class="list-group-item list-group-item-action">
 								<div class="row align-items-center">
 									<div class="col-auto">
 										<!-- Avatar -->
@@ -143,7 +143,7 @@ $dataNotification = get_notification($this->session->userdata('id'),0);
 								<img alt="Image placeholder" src="http://i.pravatar.cc/200">
 							</span>
 							<div class="media-body ml-2 d-none d-lg-block">
-								<span class="mb-0 text-sm  font-weight-bold">Admin</span>
+								<span class="mb-0 text-sm  font-weight-bold"></span>
 							</div>
 						</div>
 					</a>

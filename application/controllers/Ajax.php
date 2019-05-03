@@ -9,7 +9,7 @@ class Ajax extends CI_Controller {
         parent::__construct();
         $this->load->model('prodi_model');
         $this->load->library('form_validation');
-        $this->load->helper('upload_helper');
+        $this->load->helper(['upload_helper','master']);
     }
     public function initImport(){
         $data = do_upload('file');
@@ -25,5 +25,8 @@ class Ajax extends CI_Controller {
         // $type = ucfirst(substr($file['file_ext'],1));
         // var_dump($type);
         // $sheetNames = $excel->readSheetName($file['full_path'],$type);
+    }
+    public function get_data(){
+
     }
 }

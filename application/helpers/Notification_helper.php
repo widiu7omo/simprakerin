@@ -20,7 +20,7 @@ if ( ! function_exists('get_notification'))
 {
     function get_notification($receiver,$status = 0){
         $ci=& get_instance();
-            $ci->db->select(['pesan','pengirim','waktu'])->from('tb_notification')->where(['penerima'=>$receiver]);
+            $ci->db->select(['uri','pesan','pengirim','waktu'])->from('tb_notification')->where(['penerima'=>$receiver]);
             if($status == 0){
                 $ci->db->where(['status'=>$status]);
             }
@@ -33,9 +33,13 @@ if ( ! function_exists('get_notification'))
 if ( ! function_exists('set_notification'))
 {
     //data contain penerima, pengirim, pesan
-    function set_notification($pengirim = null,$penerima = null,$pesan,$hal){
+    function set_notification($pengirim = null,$penerima = null,$pesan,$hal,$uri = null){
         $ci=& get_instance();
             $data = array('pengirim'=>$pengirim,'penerima'=>$penerima,'pesan'=>$pesan,'hal'=>$hal);
+            if($uri != null){
+            	$data['uri'] = $uri;
+            }
+            //@TODO:add validation, if data already set, then just doing nothing
             $ci->db->insert('tb_notification',$data);
         }
 }
@@ -46,7 +50,7 @@ if ( ! function_exists('update_notification'))
         $ci=& get_instance();
             $isRead = $status == 'read'?1:0;
             $data = array('status'=>$isRead);
-            $where = array('hal'=>$hal,'penerima'=>$penerima);
+            $where = array('hal'=>$hal,'penerima'=>$penerima);//TODO:change hal to pesan, cz pesan rarely same;
             $ci->db->update('tb_notification',$data,$where);
         }
 }

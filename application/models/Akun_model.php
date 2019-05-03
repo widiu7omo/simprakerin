@@ -150,6 +150,7 @@ class Akun_model extends CI_Model {
             $addtionalDataNotif['pengirim'] = $this->session->userdata('id')?$this->session->userdata('id'):null;
             $addtionalDataNotif['pesan'] = 'Silahkan melengkapi profil terlebih dahulu untuk bisa mengajukan permohonan magang';
             $addtionalDataNotif['hal'] = 'profil';
+	        $addtionalDataNotif['uri'] = 'user/profile';
             $unsetData = ['id_master_level'];
             $generatedDataNotif = $this->match_data($batchData,$addtionalDataNotif,[['old'=>'username','new'=>'penerima','keep'=>false]],$unsetData);
             $this->db->insert_batch($addtionalTable3,$generatedDataNotif);

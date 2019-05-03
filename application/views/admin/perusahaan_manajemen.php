@@ -28,8 +28,8 @@
                             <div class="col-8">
                                 <h3 class="mb-0">Tambah Perusahaan</h3>
                                 <p class="text-sm mb-0">
-                                    This is an example of user management. This is a minimal setup in order to get
-                                    started fast.
+                                    Ketika mahasiswa sudah melakukan pemilihan, pihak admin tidak lagi bisa mengedit kuota perusahaan untuk menghindari
+                                    ketidak cocokan data.
                                 </p>
                             </div>
                             <div class="col-4 text-right">

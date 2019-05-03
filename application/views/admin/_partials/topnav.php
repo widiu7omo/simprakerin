@@ -63,7 +63,7 @@ $dataNotification = get_notification($this->session->userdata('level'),0);
                         <!-- List group -->
                         <div class="list-group list-group-flush">
 							<?php foreach($dataNotification as $notification): ?>
-                                <a href="#!" class="list-group-item list-group-item-action">
+                                <a href="<?php echo $notification->uri?$notification->uri:'#'?>" class="list-group-item list-group-item-action">
                                     <div class="row align-items-center">
                                         <div class="col-auto">
                                             <!-- Avatar -->

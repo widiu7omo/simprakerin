@@ -20,7 +20,9 @@ class Login extends CI_Controller {
         //if multilevel index are exist
         
         if(isset($get['in'])){
+            //excute by modal multilevel
             if($get['in'] == 'multi'){
+//                var_dump('hey from multilevel');
                 $postAkun = $post['level'];
                 $decodeAkun = json_decode($postAkun);
                 $akun['tb_akun.username'] = $decodeAkun[0];
@@ -46,7 +48,7 @@ class Login extends CI_Controller {
                     $this->session->set_flashdata('fail','Gagal untuk Login, pastikan mengisi username dan password dengan benar');
                     redirect(site_url('login'));
                 }
-                return ;
+                return;
             }
             $akun['tb_akun.username'] = $post['username'];
             $password = $post['password'];
@@ -68,6 +70,7 @@ class Login extends CI_Controller {
                 unset($isValidAkun['status']);
                 $this->session->set_flashdata('multilevel',$isValidAkun);
                 redirect(site_url('login?m=true'));
+                return;
             }
             else {
                 $this->session->set_flashdata('fail','Gagal untuk Login, pastikan mengisi username dan password dengan benar');
