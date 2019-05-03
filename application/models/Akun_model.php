@@ -14,7 +14,6 @@ class Akun_model extends CI_Model {
     {
         parent::__construct();
         //Do your magic here
-        $this->load->library('encrypt');
     }
     
     public function rules(){
