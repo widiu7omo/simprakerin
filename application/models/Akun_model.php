@@ -14,6 +14,8 @@ class Akun_model extends CI_Model {
     {
         parent::__construct();
         //Do your magic here
+	    $this->load->helper('master');
+
     }
     
     public function rules(){
@@ -101,8 +103,6 @@ class Akun_model extends CI_Model {
         return $datas;
     }
     public function insert_batch($batchData,$importFor = null,$addtionalDatas){
-        //load helper
-        $this->load->helper('master');
         // Batch data must array, at least contain username and password
         
         $statusImport = [];
