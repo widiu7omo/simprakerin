@@ -102,7 +102,7 @@ class Akun_model extends CI_Model {
     }
     public function insert_batch($batchData,$importFor = null,$addtionalDatas){
         //load helper
-        $this->load->helper('master_helper');
+        $this->load->helper('master');
         // Batch data must array, at least contain username and password
         
         $statusImport = [];
