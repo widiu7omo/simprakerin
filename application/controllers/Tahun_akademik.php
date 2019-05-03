@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TahunAkademik extends CI_Controller {//change class
+class Tahun_akademik extends CI_Controller {//change class
     public function __construct()
     {
         parent::__construct();
