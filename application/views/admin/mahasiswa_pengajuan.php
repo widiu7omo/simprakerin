@@ -64,6 +64,7 @@
                                     <button class="btn btn-sm btn-invert btn-outline-light"></button><small>Masuk</small>
                                     <button class="btn btn-sm btn-primary"></button><small>Dicetak</small>
                                     <button class="btn btn-sm btn-info"></button><small>Dikirim</small>
+                                    <button class="btn btn-sm btn-warning"></button><small>Pending</small>
                                     <button class="btn btn-sm btn-success"></button><small>Diterima</small>
                                     <button class="btn btn-sm btn-danger"></button><small>Ditolak</small>
 
@@ -114,13 +115,14 @@
     <script>
         /* Formatting function for row details - modify as you need */
         function format ( d ) {
-            // console.log(d)
             // `d` is the original data object for the row
             return '<div>' +
                 '<p>Daftar Mahasiswa: <br></p>' +
                 '<ul>'+d.mahasiswa.map(m =>{return '<li>' + m.nama_mahasiswa + '</li>'}).join('\n')+'</ul>' +
-                '<a class="btn-sm btn btn-primary" href="<?php echo site_url('mahasiswa?m=pengajuan&q=p&id=') ?>'+d.id_perusahaan+'">Cetak Surat Permohonan</a>' +
-                d.mahasiswa.map(m =>{return m.status === 'cetak'? '<a class="btn-sm btn btn-primary" href="<?php echo site_url('mahasiswa?m=pengajuan&q=notif&id=') ?>'+d.id_perusahaan+'">Infokan Surat Jadi</a>' :null}).join('')+
+                (d.mahasiswa[0].status === 'pending'?'<a class="btn-sm btn btn-primary" target="_blank" href="<?php echo site_url('mahasiswa?m=pengajuan&q=view&id=') ?>'+d.id_perusahaan+'">Lihat Bukti Penerimaan</a>' :'')+
+                (d.mahasiswa[0].status === 'pending'?'<a class="btn-sm btn btn-primary" href="<?php echo site_url('mahasiswa?m=pengajuan&q=accept&id=') ?>'+d.id_perusahaan+'">Setujui Bukti Penerimaan</a>' :'')+
+                (d.mahasiswa[0].status === 'proses'?'<a class="btn-sm btn btn-primary" href="<?php echo site_url('mahasiswa?m=pengajuan&q=p&id=') ?>'+d.id_perusahaan+'">Cetak Surat Permohonan</a>' :'')+
+                (d.mahasiswa[0].status === 'cetak'? '<a class="btn-sm btn btn-primary" href="<?php echo site_url('mahasiswa?m=pengajuan&q=notif&id=') ?>'+d.id_perusahaan+'">Infokan Surat Jadi</a>' :'')+
                 '</div>';
         }
         $(document).ready(function() {
@@ -162,6 +164,9 @@
                     }
                     if (data.mahasiswa[0].status === 'kirim'){
                         $(row).addClass('text-white bg-info');
+                    }
+                    if (data.mahasiswa[0].status === 'pending'){
+                        $(row).addClass('text-white bg-warning');
                     }
                     if (data.mahasiswa[0].status === 'tolak'){
                         $(row).addClass('text-white bg-danger');

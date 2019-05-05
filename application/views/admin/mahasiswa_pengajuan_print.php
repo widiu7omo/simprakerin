@@ -29,26 +29,6 @@ $currentTahun = masterdata('tb_waktu');?>
 	?>
 	<!-- Page content -->
 	<div class="container-fluid mt--6">
-		<!-- Export -->
-
-		<div class="row">
-			<div class="col" id="mainbody">
-				<?php if ($this->session->flashdata('success')): ?>
-					<div class="alert alert-success alert-dismissible fade show" role="alert">
-						<span class="alert-icon"><i class="ni ni-like-2"></i></span>
-						<span class="alert-text"><strong>Success!
-								&nbsp;</strong><?php echo $this->session->flashdata('success'); ?></span><br>
-						<small class="alert-text">Data Mahasiswa sebanyak <?php echo $this->session->flashdata('status')->tb_mahasiswa ?></small><br>
-						<small class="alert-text">Akun sebanyak <?php echo $this->session->flashdata('status')->tb_akun ?> telah terbuat</small>
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-				<?php endif; ?>
-			</div>
-		</div>
-
-
 		<!-- Table -->
 		<div class="row">
 			<div class="col">

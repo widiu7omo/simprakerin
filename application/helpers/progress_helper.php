@@ -16,11 +16,14 @@ if ( ! function_exists( 'getProgress' ) ) {
 			case 'kirim':
 				$percent = 75;
 				break;
+			case 'pending':
+				$percent = 95;
+				break;
 			case 'terima':
-				$percent = 99;
+				$percent = 100;
 				break;
 			case 'tolak':
-				$percent = 90;
+				$percent = 98;
 				break;
 			default : $percent = 100;
 		}

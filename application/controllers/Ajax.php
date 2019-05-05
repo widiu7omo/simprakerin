@@ -37,7 +37,7 @@ class Ajax extends CI_Controller {
 //		var_dump( $data);
 		$file = $data['upload_data'];
 //		var_dump( $file['full_path'] );
-		$this->pengajuan_model->update_multi(['bukti_diterima'=>$file['full_path'],'status'=>'terima'],['id_perusahaan'=>$id]);
+		$this->pengajuan_model->update_multi(['bukti_diterima'=>$file['full_path'],'status'=>'pending'],['id_perusahaan'=>$id]);
 		set_notification( $nim, 'admin', "{$mhs->nama_mahasiswa} ({$nim}) telah mengirim bukti penerimaan magang", 'bukti diterima','mahasiswa?m=pengajuan');
 //		redirect(site_url('magang?m=pengajuan'));
 		//inject full path

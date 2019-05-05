@@ -11,7 +11,7 @@ class Mahasiswa extends MY_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->helper( array( 'upload', 'master','notification' ) );
-		$this->load->model( [ 'mahasiswa_model', 'pengajuan_model', 'akun_model' ] );
+		$this->load->model( [ 'mahasiswa_model', 'pengajuan_model', 'akun_model','pilihperusahaan_model' ] );
 		$this->load->library( 'form_validation' );
 		//middleware
 		! $this->session->userdata( 'level' ) ? redirect( site_url( 'main' ) ) : null;
@@ -73,6 +73,9 @@ class Mahasiswa extends MY_Controller {
 
 					return $this->index_magang();
 					break;
+				case 'fixmagang':
+					return $this->index_fixmagang();
+					break;
 				case 'sidang':
 					$post = $this->input->post();
 					if ( isset( $post['insert'] ) ) {
@@ -90,6 +93,15 @@ class Mahasiswa extends MY_Controller {
 				case 'pengajuan':
 					if ( isset( $get['q'] ) && $get['q'] == 'p' ) {
 						return $this->print_pengajuan();
+					}
+					if ( isset( $get['q'] ) && $get['q'] == 'accept' ) {
+						return $this->accept_pengajuan();
+					}
+					if ( isset( $get['q'] ) && $get['q'] == 'decline' ) {
+						return $this->decline_pengajuan();
+					}
+					if ( isset( $get['q'] ) && $get['q'] == 'view' ) {
+						return $this->view_pengajuan();
 					}
 					if ( isset( $get['q'] ) && $get['q'] == 'notif' ) {
 						$level = $this->session->userdata('level');
@@ -110,6 +122,16 @@ class Mahasiswa extends MY_Controller {
 
 	}
 
+	//fix magang
+	public function index_fixmagang(){
+		$join = [];
+		$join[0] = ['tb_mahasiswa','tb_mahasiswa.nim = tb_mhs_pilih_perusahaan.nim','inner'];
+		$join[1] = ['tb_perusahaan','tb_perusahaan.id_perusahaan = tb_mhs_pilih_perusahaan.id_perusahaan','inner'];
+		$join[2] = ['tb_program_studi','tb_program_studi.id_program_studi = tb_perusahaan.id_program_studi','left outer'];
+		$data['mahasiswas'] = $this->pilihperusahaan_model->getAll(null,null,$join);//need filter only magang
+		$this->load->view( 'admin/mahasiswa_magang_fix',$data );
+
+	}
 	//magang
 	public function index_magang() {
 		$data['mahasiswas'] = $this->mahasiswa_model->getAll();//need filter only magang
@@ -129,8 +151,49 @@ class Mahasiswa extends MY_Controller {
 	}
 
 	//pengajuan
+	public function view_pengajuan(){
+		//id perusahaan
+		$id = $this->input->get('id');
+		if(isset($id)) {
+			$getBuktiPerimaan = masterdata( 'tb_perusahaan_sementara', "id_perusahaan = {$id}", 'bukti_diterima', true );
+			//ambil array pertama, karena data pada perusahaan yang sama punya bukti penerimaan yang sama
+			$data['id']     = $id;
+			$data['berkas'] = $getBuktiPerimaan[0]->bukti_diterima;
+			return $this->load->view( 'admin/mahasiswa_pengajuan_diterima', $data );
+		}
+		redirect(site_url('mahasiswa?m=pengajuan'));
+	}
+	public function accept_pengajuan(){
+		$id = $this->input->get('id');
+		$mahasiswaMagang = masterdata( 'tb_perusahaan_sementara', "id_perusahaan = {$id}", 'nim' ,true);
+		//id perusahaan
+		if(isset($id)) {
+			$data ['status']        = 'terima';
+			$where['id_perusahaan'] = $id;
+			$this->pengajuan_model->update_multi( $data, $where );
+			foreach ($mahasiswaMagang as $mhsMagang){
+				$data['id_perusahaan'] = $id;
+				$data ['nim']        = $mhsMagang->nim;
+				$this->pilihperusahaan_model->insert( $data );
+			}
+			$this->session->set_flashdata( 'status', 'Surat Persetujuan berhasil di setujui' );
+		}
+		redirect(site_url('mahasiswa?m=pengajuan'));
+	}
+	public function decline_pengajuan(){
+		$id = $this->input->get('id');
+		//id perusahaan
+		if(isset($id)) {
+			$where['id_perusahaan'] = $id;
+			$data ['status']        = 'tolak';
+			$this->pengajuan_model->update_multi( $data, $where );
+		}
+		redirect(site_url('mahasiswa?m=pengajuan'));
+
+	}
 	public function info_pengajuan(){
 		$id = $this->input->get('id');
+		//idperusahaan
 		$level = $this->session->userdata('level');
 		$getPenerima = masterdata( 'tb_perusahaan_sementara',"id_perusahaan = {$id}",'nim',true);
 		if(count($getPenerima) > 0){

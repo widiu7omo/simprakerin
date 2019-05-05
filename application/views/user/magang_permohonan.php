@@ -5,7 +5,7 @@
 <?php $this->load->view( 'user/_partials/header.php' ); ?>
 <?php $this->load->helper( [ 'master', 'progress' ] );
 $nim      = $this->session->userdata( 'id' );
-$where    = "(status = 'proses' or status = 'terima' or status = 'cetak' or status = 'kirim') AND nim = '{$nim}'";
+$where    = "(status = 'proses' or status = 'terima' or status = 'cetak' or status = 'pending' or status = 'kirim') AND nim = '{$nim}'";
 $join     = [ 'tb_perusahaan', 'tb_perusahaan_sementara.id_perusahaan = tb_perusahaan.id_perusahaan', 'left outer' ];
 $select   = [ 'tb_perusahaan.nama_perusahaan', 'tb_perusahaan.id_perusahaan', 'tb_perusahaan_sementara.status' ];
 $approval = datajoin( 'tb_perusahaan_sementara', $where, $select, $join );
@@ -27,6 +27,7 @@ function getTempMhs( $id ) {
 	$where    = "tb_perusahaan_sementara.id_perusahaan = {$id} 
 	              AND (tb_perusahaan_sementara.status = 'proses'
 	               OR tb_perusahaan_sementara.status = 'cetak'
+	               OR tb_perusahaan_sementara.status = 'pending'
 	               OR tb_perusahaan_sementara.status = 'terima'
 	               OR tb_perusahaan_sementara.status = 'kirim')";
 
@@ -100,9 +101,12 @@ function getTempMhs( $id ) {
                                     <div class="progress-label">
                                         <span>Status :</span>
                                         <span><?php echo $exist ? 'Di' . ( isset( $approval[0] ) ? $approval[0]->status : null ) : 'N/A' ?></span>
-										<?php if ( isset( $approval[0] ) && $approval[0]->status == 'terima' ): ?>
+										<?php if ( isset( $approval[0] ) && $approval[0]->status == 'pending' ): ?>
                                             <span>/ Menunggu persetujuan dari prakerin</span>
 										<?php endif; ?>
+	                                    <?php if ( isset( $approval[0] ) && $approval[0]->status == 'terima' ): ?>
+                                            <span>/ Disetujui sepenuhnya oleh prakerin</span>
+	                                    <?php endif; ?>
                                     </div>
                                     <div class="progress-percentage">
                                         <span><?php echo getProgress( isset( $approval[0] ) ? $approval[0]->status : null ) ?>%</span>
@@ -118,7 +122,6 @@ function getTempMhs( $id ) {
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-md-12">
