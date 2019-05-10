@@ -82,7 +82,8 @@ function getTempMhs( $id ) {
                                                  data-dropzone-url="<?php echo site_url( 'ajax/uploadbukti?id=' . $id_perusahaan ) ?>">
                                                 <ul class="dz-preview dz-preview-multiple list-group list-group-lg list-group-flush"></ul>
                                                 <div class="dz-default dz-message">
-                                                    <span>Upload bukti diterima magang</span>
+                                                    <span>Upload bukti diterima magang</span><br>
+                                                    <small class="text-danger">*format harus .pdf</small>
                                                     <div class="spinner-border text-danger" role="status">
                                                         <span class="sr-only">Loading...</span>
                                                     </div>
@@ -113,7 +114,7 @@ function getTempMhs( $id ) {
                                     </div>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-default" role="progressbar"
+                                    <div class="progress-bar bg-<?php echo (isset( $approval[0] ) && $approval[0]->status == 'terima')?'success':'gradient-primary'?>" role="progressbar"
                                          aria-valuenow="<?php echo getProgress( isset( $approval[0] ) ? $approval[0]->status : null ) ?>"
                                          aria-valuemin="0" aria-valuemax="100"
                                          style="width: <?php echo getProgress( isset( $approval[0] ) ? $approval[0]->status : null ) ?>%;"></div>
@@ -241,7 +242,7 @@ function getTempMhs( $id ) {
             var options = {
                 url: $this.data('dropzone-url'),
                 maxFiles: (!multiple) ? 1 : 1,
-                acceptedFiles: (!multiple) ? '.pdf,.docx,.doc' : null,
+                acceptedFiles:'.pdf',
                 init: function () {
                     this.on("addedfile", function (file) {
                         if (!multiple && currentFile) {

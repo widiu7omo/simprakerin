@@ -74,28 +74,20 @@ class Perusahaan_model extends CI_Model {
 
 		return $this->db->insert($this->_table,$this);
 	}
-	//insert one
+	//insert one perusahaan dari mahasiswa
 	public function insert(){
 
 		$post = $this->input->post();
-
+		$prodi = $this->session->userdata('prodi');
 		//add parameter here
-		$this->id_perusahaan = $post['id_perusahaan'];
-		if(isset($post['id_negara'])){
-			$this->id_negara = $post['id_negara'];
-			$this->id_provinsi = $post['id_provinsi'];
-			$this->id_kecamatan = $post['id_kecamatan'];
-			$this->id_kab_kota = $post['id_kab_kota'];
-		}
-		isset($post['status_perusahaan'])?$this->status_perusahaan = $post['status_perusahaan']:null;
-		isset($post['id_program_studi'])?$this->id_program_studi = $post['id_program_studi']:null;
-		isset($post['id_kerjasama_perusahaan'])?$this->id_kerjasama_perusahaan = $post['id_kerjasama_perusahaan']:null;
+		//status perusahaan default = uncheck, already declare on db
+		$this->id_program_studi = isset($post['id_program_studi'])?$post['id_program_studi']:$prodi;
 		$this->nama_perusahaan = $post['nama_perusahaan'];
 		$this->alamat_perusahaan = $post['alamat_perusahaan'];
 		$this->telepon_perusahaan = $post['telepon_perusahaan'];
 		$this->long_perusahaan = $post['long_perusahaan'];
 		$this->lat_perusahaan = $post['lat_perusahaan'];
-		$this->kuota_pkl = $post['kuota_pkl'];
+		$this->kuota_pkl = 0;
 
 		return $this->db->insert($this->_table,$this);
 	}

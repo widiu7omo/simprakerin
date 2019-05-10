@@ -25,7 +25,7 @@ if ( ! function_exists( 'getProgress' ) ) {
 			case 'tolak':
 				$percent = 98;
 				break;
-			default : $percent = 100;
+			default : $percent = 0;
 		}
 		return $percent;
 	}

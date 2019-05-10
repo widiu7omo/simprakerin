@@ -94,6 +94,9 @@ class Mahasiswa extends MY_Controller {
 					if ( isset( $get['q'] ) && $get['q'] == 'p' ) {
 						return $this->print_pengajuan();
 					}
+					if ( isset( $get['q'] ) && $get['q'] == 'ptugas' ) {
+						return $this->print_surat_tugas();
+					}
 					if ( isset( $get['q'] ) && $get['q'] == 'accept' ) {
 						return $this->accept_pengajuan();
 					}
@@ -253,14 +256,44 @@ class Mahasiswa extends MY_Controller {
 		echo json_encode( $ajuan );
 
 	}
-
+	public function print_surat_tugas(){
+		$get = $this->input->get();
+		$level = $this->session->userdata('level');
+		$where                                    = [
+			'tb_perusahaan.status_perusahaan'       => 'whitelist',
+			'tb_perusahaan_sementara.id_perusahaan' => $get['id']
+		];
+		$joins[0]                                 = [
+			'tb_perusahaan',
+			'tb_perusahaan.id_perusahaan=tb_perusahaan_sementara.id_perusahaan',
+			'left outer'
+		];
+		$joins[1]                                 = [
+			'tb_mahasiswa',
+			'tb_mahasiswa.nim=tb_perusahaan_sementara.nim',
+			'left outer'
+		];
+		$joins[2]                                 = [
+			'tb_program_studi',
+			'tb_program_studi.id_program_studi=tb_perusahaan.id_program_studi',
+			'left outer'
+		];
+		$select                                   = [ 'tb_program_studi.nama_program_studi','tb_perusahaan.nama_perusahaan','tb_perusahaan.kuota_pkl','nama_mahasiswa','tb_mahasiswa.nim', 'tanggal_pengajuan' ];
+		$data['permohonan']= datajoin( 'tb_perusahaan_sementara', $where, $select, $joins, null );
+		$data['id_perusahaan'] = $get['id'];
+		if(isset($get['save'])){
+			//update status proses permohonan if save is define
+			$id['id_perusahaan'] = $get['id'];
+			foreach ($data['permohonan'] as $perm){
+				set_notification( $level, $perm->nim, 'Surat tugas sudah dicetak, silahkan hubungi prakerin untuk informasi selanjutnya', 'surat tugas siap',null);
+			}
+			return $this->load->view('admin/surat_tugas',$data);
+		}
+		$this->load->view('admin/mahasiswa_pengajuan_print_surat_tugas',$data);
+	}
 	public function print_pengajuan(){
 		$get = $this->input->get();
 		//id perusahaan
-		//update status proses permohonan
-		$where['id_perusahaan'] = $get['id'];
-		$data ['status'] = 'cetak';
-		$this->pengajuan_model->update_multi($data,$where);
 
 		//sending parameter to surat permohoanan
 		$where                                    = [
@@ -282,9 +315,18 @@ class Mahasiswa extends MY_Controller {
 			'tb_program_studi.id_program_studi=tb_perusahaan.id_program_studi',
 			'left outer'
 		];
-		$select                                   = [ 'tb_program_studi.nama_program_studi','tb_perusahaan.nama_perusahaan','nama_mahasiswa', 'tanggal_pengajuan' ];
+		$select                                   = [ 'tb_program_studi.nama_program_studi','tb_perusahaan.nama_perusahaan','tb_perusahaan.kuota_pkl','nama_mahasiswa','tb_mahasiswa.nim', 'tanggal_pengajuan' ];
 		$data['permohonan']= datajoin( 'tb_perusahaan_sementara', $where, $select, $joins, null );
+		$data['id_perusahaan'] = $get['id'];
+		if(isset($get['save'])){
+			//update status proses permohonan if save is define
+			$id['id_perusahaan'] = $get['id'];
+			$update['status'] = 'cetak';
+			$this->pengajuan_model->update_multi($update,$id);
+			return $this->load->view('admin/surat_pengajuan',$data);
+		}
 		$this->load->view('admin/mahasiswa_pengajuan_print',$data);
+//		redirect(site_url('mahasiswa?m=pengajuan'));
 	}
 	public function index_pengajuan() {
 		$where['tb_perusahaan.status_perusahaan'] = 'whitelist';

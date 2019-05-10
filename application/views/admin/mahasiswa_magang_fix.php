@@ -5,6 +5,8 @@
 <?php  $this->load->view('admin/_partials/header.php');?>
 <!-- Custom Helper -->
 <?php $this->load->helper('master_helper');
+$join = ['tahun_akademik','tahun_akademik.id_tahun_akademik = tb_waktu.id_tahun_akademik','right join'];
+$tahun_akademik = datajoin( 'tb_waktu',null,'tahun_akademik.tahun_akademik',$join)
 ?>
 
 <body>
@@ -31,14 +33,13 @@
 							<div class="col-8">
 								<h3 class="mb-0">Mahasiswa</h3>
 								<p class="text-sm mb-0">
-									This is an example of user management. This is a minimal setup in order to get
-									started fast.
+									Berikut daftar mahasiswa yang dipastikan magang pada tahun <?php echo $tahun_akademik[0]->tahun_akademik?> yang telah mendapatkan perusahaan magang
 								</p>
 							</div>
 						</div>
 					</div>
 					<div class="table-responsive py-4">
-						<table class="table table-flush" id="datatable-buttons">
+						<table class="table table-flush" id="datatable-mhs-fix">
 							<thead class="thead-light">
 							<tr role="row">
 								<th style="width:30px">Aksi</th>
@@ -91,6 +92,60 @@
 </div>
 <!-- Scripts PHP-->
 <?php $this->load->view('admin/_partials/js.php');?>
+<script>
+    var DatatableButtons = (function() {
+
+        // Variables
+
+        var $dtButtons = $('#datatable-mhs-fix');
+
+
+        // Methods
+
+        function init($this) {
+
+            // For more options check out the Datatables Docs:
+            // https://datatables.net/extensions/buttons/
+
+            var buttons = [
+                'csv', 'excel', 'pdf', 'print'
+            ];
+
+            // Basic options. For more options check out the Datatables Docs:
+            // https://datatables.net/manual/options
+
+            var options = {
+
+                lengthChange: !1,
+                dom: 'Bfrtip',
+                buttons: buttons,
+                // select: {
+                // 	style: "multi"
+                // },
+                language: {
+                    paginate: {
+                        previous: "<i class='fas fa-angle-left'>",
+                        next: "<i class='fas fa-angle-right'>"
+                    }
+                }
+            };
+
+            // Init the datatable
+
+            var table = $this.on( 'init.dt', function () {
+                $('.dt-buttons .btn').removeClass('btn-secondary').addClass('btn-sm btn-default');
+            }).DataTable(options);
+        }
+
+
+        // Events
+
+        if ($dtButtons.length) {
+            init($dtButtons);
+        }
+
+    })();
+</script>
 <!-- Demo JS - remove this in your project -->
 <!-- <script src="../assets/js/demo.min.js"></script> -->
 </body>

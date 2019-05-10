@@ -10,7 +10,9 @@
 <script src="<?php echo base_url('assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/datatables.net-buttons/js/buttons.html5.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/vendor/datatables.net/js/jszip.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') ?>"></script>
+
 <script src="<?php echo base_url('assets/vendor/datatables.net-buttons/js/buttons.print.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/datatables.net-select/js/dataTables.select.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/dropzone/dist/min/dropzone.js') ?>"></script>

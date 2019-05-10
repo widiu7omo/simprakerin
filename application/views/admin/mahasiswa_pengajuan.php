@@ -123,6 +123,7 @@
                 (d.mahasiswa[0].status === 'pending'?'<a class="btn-sm btn btn-primary" href="<?php echo site_url('mahasiswa?m=pengajuan&q=accept&id=') ?>'+d.id_perusahaan+'">Setujui Bukti Penerimaan</a>' :'')+
                 (d.mahasiswa[0].status === 'proses'?'<a class="btn-sm btn btn-primary" href="<?php echo site_url('mahasiswa?m=pengajuan&q=p&id=') ?>'+d.id_perusahaan+'">Cetak Surat Permohonan</a>' :'')+
                 (d.mahasiswa[0].status === 'cetak'? '<a class="btn-sm btn btn-primary" href="<?php echo site_url('mahasiswa?m=pengajuan&q=notif&id=') ?>'+d.id_perusahaan+'">Infokan Surat Jadi</a>' :'')+
+                (d.mahasiswa[0].status === 'terima'? '<a class="btn-sm btn btn-primary" href="<?php echo site_url('mahasiswa?m=pengajuan&q=ptugas&id=') ?>'+d.id_perusahaan+'">Cetak Surat Tugas</a>' :'')+
                 '</div>';
         }
         $(document).ready(function() {

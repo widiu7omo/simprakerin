@@ -27,7 +27,7 @@ class Magang extends CI_Controller {
 	            array('name'=>'Pengajuan Perusahaan baru',
 	                  'href'=>site_url('magang?m=perusahaanbaru'),
 	                  'icon'=>'fas fa-star',
-	                  'desc'=>'Penilaian yang diperoleh dari tempat magang yang bersangkutan'),
+	                  'desc'=>'Pengajuan perusahaan baru, ketika pilihan perusahaan mahasiswa tidak tersedia di daftar perusahaan'),
                 array('name'=>'Informasi Perusahaan',
                     'href'=>site_url('magang?m=perusahaan'),
                     'icon'=>'fas fa-building',
@@ -71,6 +71,12 @@ class Magang extends CI_Controller {
 				    return $this->index_pengajuan();
 
 				    break;
+			    case 'perusahaanbaru':
+			    	if(isset( $get['q']) && $get['q'] == 'i'){
+			    		return $this->create_perusahaanbaru();
+				    }
+			    	return $this->index_perusahaanbaru();
+			    	break;
 			    case 'perusahaan':
 				    $post = $this->input->post();
 				    if(isset($post['insert'])){
@@ -176,6 +182,36 @@ class Magang extends CI_Controller {
 
 
 
+	}
+
+	public function index_perusahaanbaru(){
+		//check,mahasiswa already have perusahaan or not
+		$id = $this->session->userdata( 'id' );
+		$isExist = masterdata( 'tb_mhs_pilih_perusahaan',"nim = '$id'",'nim',true);
+		if(count( $isExist)> 0){
+			$data['status'] = 'TIDAK TERSEDIA BAGI YANG SUDAH MEMPUNYAI TEMPAT MAGANG';
+			return $this->load->view('user/not_available',$data);
+		}
+		$this->load->view( 'user/magang_perusahaan_baru');
+	}
+	public function create_perusahaanbaru(){
+		$post = $this->input->post();
+		$id = $this->session->userdata('id');
+		//id = mahasiswa
+		$data_mhs = masterdata( 'tb_mahasiswa',"nim = '$id'",'nama_mahasiswa',false);
+		$pesan = "Mahasiswa $data_mhs->nama_mahasiswa ($id) telah mengajukan perusahaan baru";
+		$uri = 'perusahaan?m=manajemen';
+//		@TODO:tambahi uri dan tes berhasil atau tidak.
+		if(isset($post['insert'])){
+			$this->perusahaan_model->insert();
+			set_notification($id ,'admin', $pesan, 'pengajuan magang',$uri);
+			$this->session->set_flashdata( 'status', ['message'=>'Data Pengajuan perusahaan berhasil disimpan','type'=>'success'] );
+			redirect('magang?m=perusahaanbaru');
+		}
+		//set notification to admin
+		//retrive prodi from session with key prodi
+
+		redirect( site_url( 'magang?m=perusahaanbaru' ));
 	}
 	public function create_perusahaan(){
 

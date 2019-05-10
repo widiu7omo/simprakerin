@@ -57,6 +57,7 @@ class Perusahaan extends CI_Controller {
                 	return $this->index_manajemen();
 
                 break;
+//              case bawah under development
                 case 'informasi':
                     $post = $this->input->post();
                     if(isset($post['insert'])){
