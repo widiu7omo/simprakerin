@@ -135,6 +135,27 @@ class Mahasiswa extends MY_Controller {
 		$this->load->view( 'admin/mahasiswa_magang_fix',$data );
 
 	}
+
+	//import magang (AJAX)
+	public function import() {
+		$post = $this->input->post();
+		//POST must containt data mahasiswa, tahunakademik and prodi
+		// $data = do_upload('userfile');
+		// $file = $data['upload_data'];
+		if ( isset( $post['mahasiswas'] ) ) {
+			$mahasiswas                          = json_decode( $post['mahasiswas'] );
+			$addtionalDatas['id_tahun_akademik'] = $post['id_tahun_akademik'];
+			$addtionalDatas['id_program_studi']  = $post['id_program_studi'];
+			$response                            = $this->akun_model->insert_batch( $mahasiswas, 'mahasiswa', $addtionalDatas );
+//			var_dump( $response );
+			if ( $response['status'] ) {
+				$this->session->set_flashdata( 'success', 'Data berhasil di import' );
+				$this->session->set_flashdata( 'status', (object) $response );
+			}
+		}
+
+
+	}
 	//magang
 	public function index_magang() {
 		$data['mahasiswas'] = $this->mahasiswa_model->getAll();//need filter only magang
@@ -397,24 +418,6 @@ class Mahasiswa extends MY_Controller {
 		}
 	}
 
-	public function import() {
-		$post = $this->input->post();
-		//POST must containt data mahasiswa, tahunakademik and prodi
-		// $data = do_upload('userfile');
-		// $file = $data['upload_data'];
-		if ( isset( $post['mahasiswas'] ) ) {
-			$mahasiswas                          = json_decode( $post['mahasiswas'] );
-			$addtionalDatas['id_tahun_akademik'] = $post['id_tahun_akademik'];
-			$addtionalDatas['id_program_studi']  = $post['id_program_studi'];
-			$response                            = $this->akun_model->insert_batch( $mahasiswas, 'mahasiswa', $addtionalDatas );
-//			var_dump( $response );
-			if ( $response['status'] ) {
-				$this->session->set_flashdata( 'success', 'Data berhasil di import' );
-				$this->session->set_flashdata( 'status', (object) $response );
-			}
-		}
 
-
-	}
 
 } ?>

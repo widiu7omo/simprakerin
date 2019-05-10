@@ -17,7 +17,7 @@ class Main extends CI_Controller {
             break;
 
             case 'koordinator prodi':
-
+				redirect(site_url('dashboard'));
             break;
             
             case 'akademik':

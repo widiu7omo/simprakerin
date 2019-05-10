@@ -13,8 +13,9 @@
 	"require": {
 		"php": ">=5.3.7",
 		"phpoffice/phpspreadsheet": "^1.6",
-		"phpoffice/phpword": "^0.16.0"
-	},
+		"phpoffice/phpword": "^0.16.0",
+      "ext-json": "*"
+    },
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
 	},
