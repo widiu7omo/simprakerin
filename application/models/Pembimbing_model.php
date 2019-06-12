@@ -59,6 +59,11 @@ class Pembimbing_model extends CI_Model {
 		return $this->db->insert( $this->_table, $this );
 	}
 
+	public function insert_batch(){
+		$post = $this->input->post();
+		var_dump( $post['pembimbing']);
+		return true;
+	}
 	public function update_multi($data,$where){
 		//add parameter here
 		return $this->db->update( $this->_table, $data, $where);

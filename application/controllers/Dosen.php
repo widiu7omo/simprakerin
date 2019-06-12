@@ -56,6 +56,9 @@ class Dosen extends MY_Controller {
 					if ( isset( $get['q'] ) && $get['q'] == 'i' ) {
 						return $this->create_pembimbing();
 					}
+					if ( isset( $get['q'] ) && $get['q'] == 'bulk' ) {
+						return $this->bulk_pembimbing();
+					}
 					if ( isset( $get['q'] ) && $get['q'] == 'u' ) {
 						return $this->edit_pembimbing();
 					}
@@ -80,6 +83,12 @@ class Dosen extends MY_Controller {
 		$data['mahasiswa'] = [];
 		//null, still consider how data goes
 		$this->load->view( 'admin/dosen_pembimbing', $data );
+	}
+
+	public function bulk_pembimbing() {
+		if($this->pembimbing_model->insert_batch()){
+			$this->session->set_flashdata( 'status', ['message'=>'Data perusahaan berhasil dirubah','type'=>'success']);
+		}
 	}
 
 	public function create_pembimbing() {
