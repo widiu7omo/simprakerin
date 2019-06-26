@@ -54,6 +54,16 @@ if ( ! function_exists('update_notification'))
             $ci->db->update('tb_notification',$data,$where);
         }
 }
+if ( ! function_exists('clear_notification')) {
+	//data contain penerima, pengirim, pesan
+	function clear_notification($penerima) {
+		$ci     =& get_instance();
+		$isRead = 1;
+		$where =array('penerima'=>$penerima);
+		$data   = array( 'status' => $isRead );
+		$ci->db->update( 'tb_notification', $data,$where );
+	}
+}
 
 if ( ! function_exists('timediff_notification'))
 {

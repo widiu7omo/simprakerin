@@ -49,6 +49,5 @@ class Tahun_akademik extends CI_Controller {//change class
         if($this->tahunakademik_model->update_waktu()){
             redirect(site_url('tahunakademik'));
         }
-        
     }
 } ?>

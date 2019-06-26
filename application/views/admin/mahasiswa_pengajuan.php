@@ -6,7 +6,8 @@
 <!-- Custom Helper -->
 <?php $this->load->helper('master_helper');
 	$prodies = masterdata('tb_program_studi');
-	$currentTahun = masterdata('tb_waktu');?>
+	$currentTahun = datajoin('tb_waktu',null,'tb_waktu.*,ta.tahun_akademik',['tahun_akademik ta','ta.id_tahun_akademik = tb_waktu.id_tahun_akademik','left outer']);
+?>
 <style>
     td.details-control::before{
         font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f0d7";
@@ -55,7 +56,7 @@
 						<div class="card-header">
 							<div class="row align-items-center">
 								<div class="col-8">
-									<h3 class="mb-0">Pengajuan Magang</h3>
+									<h3 class="mb-0">Pengajuan Magang <?php echo $currentTahun[0]->tahun_akademik ?></h3>
 									<p class="text-sm mb-0">
 										Daftar Mahasiswa yang mengajukan permohonan magang
 									</p>
@@ -135,7 +136,7 @@
                 },
                 "bLengthChange": false,
                 "render": function ( data, type, full, meta ) {
-                    console.log(data)
+                    console.log(data);
                     console.log(type,full,meta)
                 },
                 "columns": [

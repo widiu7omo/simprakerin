@@ -150,7 +150,7 @@
 defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
 header( "Content-Type: application/vnd.msword" );
 
-$tanggal = date( 'd-m-Y' );
+$tanggal = date( 'd-M-Y' );
 header( "Expires: 0" );
 header( "Cache-Control: must-revalidate, post-check=0, pre-check=0" );
 header( "content-disposition: attachment;filename=Surat Pengajuan Magang " . $tanggal . ".doc" )

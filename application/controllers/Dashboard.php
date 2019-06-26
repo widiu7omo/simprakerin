@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller {
         parent::__construct();
         //Do your magic here
         // $this->load->model('Model_dashboard');
+	    $this->load->helper('notification');
     }
     //dashboard admin
     public function index()
@@ -16,6 +17,11 @@ class Dashboard extends CI_Controller {
 //    	var_dump( $this->session->userdata());
         $this->load->view('admin/dashboard');
         
+    }
+    public function clearnotif(){
+    	$users = $this->session->userdata('level');
+	    clear_notification($users);
+	    redirect(site_url($this->uri->segment(1)));
     }
 
 }

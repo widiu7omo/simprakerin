@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['tahunakademik'] = 'Tahun_akademik';
+$route['tahunakademik/(:any)'] = 'Tahun_akademik/$1';

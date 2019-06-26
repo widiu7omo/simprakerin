@@ -28,6 +28,12 @@ class Sync extends CI_Controller {
 		]
 	);
 
+	public function index(){
+		var_dump('exp');
+		$kepegawaian =$this->load->database('kepegawaian',TRUE);
+		$tables = $kepegawaian->query('show create table tb_user')->result();
+		var_dump( $tables);
+	}
 	public function set_pegawai() {
 		//insert into akun
 		$objectPegawais = json_decode( json_encode( $this->pegawais ) );

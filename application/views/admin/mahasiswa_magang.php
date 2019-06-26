@@ -39,6 +39,11 @@
 						</button>
 					</div>
 					<?php endif; ?>
+					<?php if($this->session->flashdata('notif')):?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+	                    <?php echo $this->session->flashdata('notif')->message;?>
+                    </div>
+					<?php endif;?>
 					<div class="card mb-5">
 						<div class="card-header">
 							<h3>Import Data Mahasiswa Magang</h3>
@@ -137,8 +142,7 @@
 								<div class="col-8">
 									<h3 class="mb-0">Mahasiswa</h3>
 									<p class="text-sm mb-0">
-										This is an example of user management. This is a minimal setup in order to get
-										started fast.
+										Berikut daftar mahasiswa yang diperbolehkan magang
 									</p>
 								</div>
 								<div class="col-4 text-right">
@@ -156,6 +160,7 @@
 										<th>No</th>
 										<th>ID</th>
 										<th>Mahasiswa</th>
+                                        <th>Program Studi</th>
 									</tr>
 								</thead>
 								<tfoot>
@@ -164,7 +169,8 @@
 										<th>No</th>
 										<th>ID</th>
 										<th>Mahasiswa</th>
-									</tr>
+                                        <th>Program Studi</th>
+                                    </tr>
 								</tfoot>
 								<tbody>
 									<?php foreach ($mahasiswas as $key => $mahasiswa): ?>
@@ -183,7 +189,8 @@
 										</td>
 										<td class="sorting_1"><?php echo $key +1?></td>
 										<td><?php echo $mahasiswa->nim?></td>
-										<td><?php echo $mahasiswa->nama_mahasiswa?></td>
+                                        <td><?php echo $mahasiswa->nama_mahasiswa?></td>
+                                        <td><?php echo $mahasiswa->nama_program_studi?></td>
 									</tr>
 									<?php endforeach; ?>
 								</tbody>

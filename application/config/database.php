@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
 
 /*
 | -------------------------------------------------------------------
@@ -70,49 +70,72 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-$active_group = 'default';
-$query_builder = TRUE;
+$active_group  = 'default';
+$query_builder = true;
 
-// $db['default'] = array(
-// 	'dsn'	=> '',
-// 	'hostname' => '127.0.0.1',
-// 	'username' => 'root',
-// 	'password' => '',
-// 	'database' => 'simprakerin',
-// 	'dbdriver' => 'mysqli',
-// 	'dbprefix' => '',
-// 	'pconnect' => FALSE,
-// 	'db_debug' => (ENVIRONMENT !== 'production'),
-// 	'cache_on' => FALSE,
-// 	'cachedir' => '',
-// 	'char_set' => 'utf8',
-// 	'dbcollat' => 'utf8_general_ci',
-// 	'swap_pre' => '',
-// 	'encrypt' => FALSE,
-// 	'compress' => FALSE,
-// 	'stricton' => FALSE,
-// 	'failover' => array(),
-// 	'save_queries' => TRUE
-// );
-
-$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => '64.62.211.134',
-	'username' => 'widiu7_simpra',
-	'password' => 'simprakerin2019',
-	'database' => 'widiu7_simprakerin',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
+$db = array(
+	'default'     => array(
+		'dsn'          => '',
+		'hostname'     => '127.0.0.1',
+		'username'     => 'root',
+		'password'     => '',
+		'database'     => 'simprakerin',
+		'dbdriver'     => 'mysqli',
+		'dbprefix'     => '',
+		'pconnect'     => false,
+		'db_debug'     => ( ENVIRONMENT !== 'production' ),
+		'cache_on'     => false,
+		'cachedir'     => '',
+		'char_set'     => 'utf8',
+		'dbcollat'     => 'utf8_general_ci',
+		'swap_pre'     => '',
+		'encrypt'      => false,
+		'compress'     => false,
+		'stricton'     => false,
+		'failover'     => array(),
+		'save_queries' => true
+	),
+	'kepegawaian' => array(
+		'dsn'          => '',
+		'hostname'     => 'kepegawaian.politala.ac.id',
+		'username'     => 'prakerin',
+		'password'     => 's1mpr4k3r1n',
+		'database'     => 'pegawai',
+		'dbdriver'     => 'mysqli',
+		'dbprefix'     => '',
+		'pconnect'     => false,
+		'db_debug'     => ( ENVIRONMENT !== 'production' ),
+		'cache_on'     => false,
+		'cachedir'     => '',
+		'char_set'     => 'utf8',
+		'dbcollat'     => 'utf8_general_ci',
+		'swap_pre'     => '',
+		'encrypt'      => false,
+		'compress'     => false,
+		'stricton'     => false,
+		'failover'     => array(),
+		'save_queries' => true
+	)
 );
+
+//$db['default'] = array(
+//	'dsn'	=> '',
+//	'hostname' => '64.62.211.134',
+//	'username' => 'widiu7_simpra',
+//	'password' => 'simprakerin2019',
+//	'database' => 'widiu7_simprakerin',
+//	'dbdriver' => 'mysqli',
+//	'dbprefix' => '',
+//	'pconnect' => FALSE,
+//	'db_debug' => (ENVIRONMENT !== 'production'),
+//	'cache_on' => FALSE,
+//	'cachedir' => '',
+//	'char_set' => 'utf8',
+//	'dbcollat' => 'utf8_general_ci',
+//	'swap_pre' => '',
+//	'encrypt' => FALSE,
+//	'compress' => FALSE,
+//	'stricton' => FALSE,
+//	'failover' => array(),
+//	'save_queries' => TRUE
+//);

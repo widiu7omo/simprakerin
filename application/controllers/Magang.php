@@ -180,8 +180,6 @@ class Magang extends CI_Controller {
 			$this->session->set_flashdata( 'status', ['message'=>'Data Perusahaan gagal dihapus','type'=>'fail']);
 		redirect(site_url('magang?m=pengajuan'));
 
-
-
 	}
 
 	public function index_perusahaanbaru(){

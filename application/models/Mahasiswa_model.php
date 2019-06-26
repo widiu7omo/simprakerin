@@ -35,21 +35,31 @@ class Mahasiswa_model extends CI_Model {
         ];
     }
 
-    public function getAll(){
-        return $this->db->get($this->_table)->result();
+    public function getAll($idProdi = null){
+    	$this->db->select('tm.*,prodi.nama_program_studi,tw.id_tahun_akademik')
+		    ->from($this->_table.' tm')
+		    ->join('tb_program_studi prodi','prodi.id_program_studi = tm.id_program_studi')
+		    ->join('tb_waktu tw','tw.id_tahun_akademik = tm.id_tahun_akademik');
+    	if($idProdi){
+    		$this->db->where("prodi.id_program_studi = $idProdi");
+	    }
+        return $this->db->get()->result();
     }
 
     public function getById($id = null){
         return $this->db->get_where($this->_table,[$this->_primary_key=>$id])->row();
     }
-
+//insert only for admin and akademik
     public function insert(){
-
+	    $statusInsert = false;
+    	$get_level = masterdata( 'tb_master_level','nama_master_level = "mahasiswa"');
+    	$akun = new stdClass();
+    	$level = new stdClass();
         $post = $this->input->post();
         $this->nim = $post['nim'];
         $this->id_tahun_akademik = $post['id_tahun_akademik'];
         $this->id_program_studi = $post['id_program_studi'];
-        $this->username = $post['username'];
+        $this->username = $post['nim'];
         $this->nama_mahasiswa = $post['nama_mahasiswa'];
         $this->alamat_mhs = isset($post['alamat_mhs'])?$post['alamat_mhs']:null;
         $this->jenis_kelamin_mhs = isset($post['jenis_kelamin_mhs'])?$post['jenis_kelamin_mhs']:null;
@@ -60,7 +70,21 @@ class Mahasiswa_model extends CI_Model {
         $this->nama_orangtua_mhs = isset($post['nama_orangtua_mhs'])?$post['nama_orangtua_mhs']:null;
         $this->no_hp_orangtua_mhs = isset($post['no_hp_orangtua_mhs'])?$post['no_hp_orangtua_mhs']:null;
         //add parameter here
-        $this->db->insert($this->_table,$this);
+	    $akun->username = $post['nim'];
+	    $akun->password = $post['nim'];
+
+	    $level->username = $post['nim'];
+	    $level->id_master_level = $get_level->id_master_level;
+	    $this->db->trans_start();
+	        $this->db->insert('tb_akun',$akun);
+	        $this->db->insert('tb_level',$level);
+	        $this->db->insert($this->_table,$this);
+	    $this->db->trans_complete();
+	    //if status transaction complete, return true
+	    if ( $this->db->trans_status() != false ) {
+		    $statusInsert = true;
+	    }
+	    return $statusInsert;
     }
 
     public function update(){
