@@ -71,7 +71,7 @@ class Mahasiswa_model extends CI_Model {
         $this->no_hp_orangtua_mhs = isset($post['no_hp_orangtua_mhs'])?$post['no_hp_orangtua_mhs']:null;
         //add parameter here
 	    $akun->username = $post['nim'];
-	    $akun->password = $post['nim'];
+	    $akun->password = password_hash($post['nim'],PASSWORD_DEFAULT);
 
 	    $level->username = $post['nim'];
 	    $level->id_master_level = $get_level->id_master_level;

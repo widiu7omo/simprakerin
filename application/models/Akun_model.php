@@ -51,10 +51,10 @@ class Akun_model extends CI_Model {
 				'tb_master_level.nama_master_level as level',
 				'tb_akun.password as password'
 			) )
-			                   ->from( 'tb_akun' )
-			                   ->join( 'tb_level', 'tb_akun.username = tb_level.username', 'inner' )
-			                   ->join( 'tb_master_level', 'tb_level.id_master_level = tb_master_level.id_master_level' )
-			                   ->where( $akun )->get()->result();
+           ->from( 'tb_akun' )
+           ->join( 'tb_level', 'tb_akun.username = tb_level.username', 'inner' )
+           ->join( 'tb_master_level', 'tb_level.id_master_level = tb_master_level.id_master_level' )
+           ->where( $akun )->get()->result();
 		}
 
 		return $result;
@@ -173,8 +173,8 @@ class Akun_model extends CI_Model {
 			case 'pegawai':
 				//chage this config
 				//key same as data id
-				$key             = 'nip';
-				$replacers       = array(
+				$key       = 'nip';
+				$replacers = array(
 					[ 'old' => 'nama', 'new' => 'nama_pegawai', 'keep' => false ],
 					[ 'old' => 'nip', 'new' => 'nip_nik', 'keep' => true ],
 					[ 'old' => 'nip', 'new' => 'username', 'keep' => false ],
@@ -194,7 +194,7 @@ class Akun_model extends CI_Model {
 						'keep' => false
 					]
 				];
-				$unsetDataLevel = [ 'nama_pegawai', 'nip_nik', 'alamat_pegawai', 'jk_pegawai','email_pegawai'];
+				$unsetDataLevel = [ 'nama_pegawai', 'nip_nik', 'alamat_pegawai', 'jk_pegawai', 'email_pegawai' ];
 
 				$addtionalDataNotif['pengirim'] = $this->session->userdata( 'level' ) ? $this->session->userdata( 'level' ) : null;
 				$addtionalDataNotif['pesan']    = 'Akun telah dibuat, silahkan melengkapi profil';

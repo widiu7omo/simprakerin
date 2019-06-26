@@ -24,4 +24,12 @@
 	<!-- Page plugins -->
 	<!-- Argon CSS -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/argonpro.css?v=1.0.0') ?> " type="text/css">
+    <style>
+        .clean:hover {
+            text-decoration: none;
+        }
+        .clean {
+            text-decoration: none;
+        }
+    </style>
 </head>

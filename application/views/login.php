@@ -27,24 +27,24 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-5 col-md-7">
 					<div class="card bg-secondary border-0 mb-0">
-						<div class="card-header bg-transparent pb-5">
-							<div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
-							<div class="btn-wrapper text-center">
-								<a href="#" class="btn btn-neutral btn-icon">
-									<span class="btn-inner--icon"><img
-											src="../../assets/img/icons/common/github.svg"></span>
-									<span class="btn-inner--text">Github</span>
-								</a>
-								<a href="#" class="btn btn-neutral btn-icon">
-									<span class="btn-inner--icon"><img
-											src="../../assets/img/icons/common/google.svg"></span>
-									<span class="btn-inner--text">Google</span>
-								</a>
-							</div>
-						</div>
+<!--						<div class="card-header bg-transparent pb-5">-->
+<!--							<div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>-->
+<!--							<div class="btn-wrapper text-center">-->
+<!--								<a href="#" class="btn btn-neutral btn-icon">-->
+<!--									<span class="btn-inner--icon"><img-->
+<!--											src="../../assets/img/icons/common/github.svg"></span>-->
+<!--									<span class="btn-inner--text">Github</span>-->
+<!--								</a>-->
+<!--								<a href="#" class="btn btn-neutral btn-icon">-->
+<!--									<span class="btn-inner--icon"><img-->
+<!--											src="../../assets/img/icons/common/google.svg"></span>-->
+<!--									<span class="btn-inner--text">Google</span>-->
+<!--								</a>-->
+<!--							</div>-->
+<!--						</div>-->
 						<div class="card-body px-lg-5 py-lg-5">
 							<div class="text-center text-muted mb-4">
-								<small>Or sign in with credentials</small>
+								<small>Login with NIM or Email</small>
 							</div>
 							<?php if ($this->session->flashdata('fail')): ?>
 							<div class="alert alert-danger alert-dismissible fade show " role="alert">
@@ -62,7 +62,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="ni ni-email-83"></i></span>
 										</div>
-										<input class="form-control" placeholder="NIM" name="username" type="username"
+										<input class="form-control" placeholder="NIM or E-mail" name="username" type="username"
 											id="username" autofocus>
 									</div>
 								</div>

@@ -59,8 +59,11 @@
 										<a href="<?php echo site_url('prodi') ?>" class="nav-link">Program Studi</a>
 									</li>
 									<li class="nav-item">
-										<a href="<?php echo site_url('wilayah') ?>" class="nav-link">Wilayah</a>
+										<a href="<?php echo site_url('surat') ?>" class="nav-link">Surat</a>
 									</li>
+                                    <li class="nav-item">
+                                        <a href="<?php echo site_url('sync') ?>" class="nav-link">Sinkronasi Pegawai</a>
+                                    </li>
 								</ul>
 							</div>
 						</li>
