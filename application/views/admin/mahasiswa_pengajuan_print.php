@@ -52,6 +52,7 @@ $currentTahun = masterdata( 'tb_waktu' ); ?>
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
+<<<<<<< HEAD
 								<?php $kuota = isset( $permohonan[0] ) ? (int) $permohonan[0]->kuota_pkl - count( $permohonan ) : 0 ?>
 								<?php if ( $kuota > 0 ): ?>
                                     <div class="alert alert-warning" role="alert">
@@ -97,6 +98,34 @@ $currentTahun = masterdata( 'tb_waktu' ); ?>
                                 <!--                                        <span aria-hidden="true">&times;</span>-->
                                 <!--                                    </button>-->
                                 <!--                                </div>-->
+=======
+	                            <?php $kuota = isset($permohonan[0])?(int) $permohonan[0]->kuota_pkl - count( $permohonan ):0?>
+	                            <?php if ($kuota > 0):?>
+                                <div class="alert alert-warning" role="alert">
+                                    <p class="alert-heading">Apakah tetapi ingin mencetak surat permohonan untuk
+                                        perusahaan ini?</p>
+                                    <p class="text-white">Kuota perusahaan masih tersisa
+                                        <strong><?php echo $kuota ?></strong>
+                                    </p>
+                                </div>
+	                            <?php endif;?>
+                                <h4 class="header"><p>Berikut daftar mahasiswa sementara yang magang pada
+                                        perusahaan <strong><?php echo isset($permohonan[0])?$permohonan[0]->nama_perusahaan:null ?></strong></p></h4>
+                                <ol class="list-group my-2">
+		                            <?php foreach ( $permohonan as $perm ): ?>
+                                        <li class="list-group-item">
+                                            <span><?php echo $perm->nama_mahasiswa ?></span><span>&nbsp;(<?php echo $perm->nim ?>)</span>
+                                        </li>
+		                            <?php endforeach; ?>
+                                </ol>
+                                <a data-toggle="tooltip" data-placement="top" title="Cetak" class="btn btn-success float-right mx-2" href="<?php echo site_url( 'mahasiswa?m=pengajuan&q=p&save=true&id=' . $id_perusahaan ) ?>"><i class="fas fa-print"></i></a>
+<!--                                <div class="alert alert-success alert-dismissible" role="alert">-->
+<!--                                    <div class="alert-text">Surat berhasil tercetak.</div>-->
+<!--                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--                                        <span aria-hidden="true">&times;</span>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 
                                 <a href="<?php echo site_url( 'mahasiswa?m=pengajuan' ) ?>"
                                    class="mx-2 btn btn-info float-right">Kembali</a>
@@ -122,7 +151,11 @@ $currentTahun = masterdata( 'tb_waktu' ); ?>
     //},1000)
 </script>
 <!-- Demo JS - remove this in your project -->
+<<<<<<< HEAD
 <!-- <script src="../aset/js/demo.min.js"></script> -->
+=======
+<!-- <script src="../assets/js/demo.min.js"></script> -->
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 </body>
 
 </html>

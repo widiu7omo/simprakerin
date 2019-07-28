@@ -50,13 +50,21 @@
 </head>
 <body>
 <div class="Section1">
+<<<<<<< HEAD
     <img src="<?php echo base_url( 'aset/img/surat/header2.png' ) ?>" width="100%" height="100%">
+=======
+    <img src="<?php echo base_url( 'assets/img/surat/header2.png' ) ?>" width="100%" height="100%">
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
     <hr style="color: #000; border: solid black 4px;height: 4px;">
     <table>
         <tr>
             <td><p style="text-align: left;">Nomor</p></td>
             <td>:</td>
+<<<<<<< HEAD
             <td><p>B/<?php echo isset($urut)?$urut:0?><?php echo isset($nomor_surat)?$nomor_surat->suffix_no_surat:null ?><?php echo date( "Y" ); ?></p></td>
+=======
+            <td><p>B/<?php echo 'urut'?>/PL40/PK.01.06/<?php echo date( "Y" ); ?></p></td>
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
             <td><p style="text-align: right;"><?php echo date( 'd-M-Y' ) ?></p></td>
         </tr>
         <tr>
@@ -72,7 +80,11 @@
             <td colspan="4"><br><br><p id="to">Kepada Yth.</p></td>
         </tr>
         <tr>
+<<<<<<< HEAD
             <td colspan="4"><p id="to">Pimpinan/ HRD <?php echo isset($permohonan)?$permohonan[0]->nama_perusahaan:null ?></p></td>
+=======
+            <td colspan="4"><p id="to">Pimpinan/ HRD <?php echo $permohonan[0]->nama_perusahaan ?></p></td>
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
         </tr>
         <tr>
             <td colspan="4"><p id="to">Di- Tempat</p></td>
@@ -82,7 +94,11 @@
                 <br>
 
                 <p style="text-align: justify; font-size: 12pt;line-height: 150%;">Dalam rangka memenuhi persyaratan kurikulum
+<<<<<<< HEAD
                     Program Studi <?php echo isset($permohonan)?$permohonan[0]->nama_program_studi:null ?> Politeknik Negeri Tanah Laut, kami
+=======
+                    Program Studi <?php echo $permohonan[0]->nama_program_studi ?> Politeknik Negeri Tanah Laut, kami
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
                     memohon
                     kepada Bapak/Ibu untuk dapat
                     memberikan kesempatan kepada mahasiswa kami sebagai berikut:</p>

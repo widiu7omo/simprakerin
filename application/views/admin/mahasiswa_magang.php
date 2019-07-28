@@ -153,7 +153,11 @@
 							</div>
 						</div>
 						<div class="table-responsive py-4">
+<<<<<<< HEAD
 							<table class="table table-flush" id="datatable-magang">
+=======
+							<table class="table table-flush" id="datatable-buttons">
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 								<thead class="thead-light">
 									<tr role="row">
 										<th style="width:30px">Aksi</th>
@@ -208,6 +212,7 @@
 	<?php $this->load->view('admin/_partials/modal.php');?>
 	<?php $this->load->view('admin/_partials/loading.php'); ?>
 	<?php $this->load->view('admin/_partials/js.php');?>
+<<<<<<< HEAD
 	<script src="<?php echo base_url('aset/vendor/js-xlsx/dist/xlsx.full.min.js') ?>"></script>
 	<script>
 		var DatatableButtons = (function() {
@@ -281,6 +286,10 @@
 	}
 
 })();
+=======
+	<script src="<?php echo base_url('assets/vendor/js-xlsx/dist/xlsx.full.min.js') ?>"></script>
+	<script>
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 		var Dropzones = (function () {
 
 			//
@@ -384,6 +393,7 @@
 				$('#sheet-name').on('change', (e) => {
 					console.log(e.target.value)
 					if (e.target.value !== '') {
+<<<<<<< HEAD
 						let dataFilter = retriveColumn(e.target.value)
 						let filteredCase = [];
 
@@ -391,6 +401,9 @@
 							return {"nim":object.nim,"nama":toTitleCase(object.nama)}
 						})
 						console.log(filteredData);
+=======
+						filteredData = retriveColumn(e.target.value)
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 					}
 				})
 			}
@@ -443,6 +456,7 @@
 			} else return null;
 		}
 
+<<<<<<< HEAD
 		 function toTitleCase(str) {
 	        return str.replace(
 	            /\w\S*/g,
@@ -457,6 +471,11 @@
 			console.log(workbook)
 			console.log(filteredData)
 
+=======
+		function doImport() {
+			console.log(workbook)
+			console.log(filteredData)
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 			console.log('show modal')
 			$('#loadingModal').modal({backdrop: 'static', keyboard: false})
 			$('#loadingModal').modal('show')
@@ -488,7 +507,11 @@
 
 	</script>
 	<!-- Demo JS - remove this in your project -->
+<<<<<<< HEAD
 	<!-- <script src="../aset/js/demo.min.js"></script> -->
+=======
+	<!-- <script src="../assets/js/demo.min.js"></script> -->
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 </body>
 
 </html>

@@ -132,7 +132,11 @@
 						<div class="card-header d-flex align-items-center">
 							<div class="d-flex align-items-center">
 								<a href="#">
+<<<<<<< HEAD
 									<img src="../../aset/img/theme/team-1.jpg" class="avatar">
+=======
+									<img src="../../assets/img/theme/team-1.jpg" class="avatar">
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 								</a>
 								<div class="mx-3">
 									<a href="#" class="text-dark font-weight-600 text-sm">John Snow</a>
@@ -152,7 +156,11 @@
 								recruiters to continue reading your CV because you’re telling them from the off exactly
 								why they should hire you.
 							</p>
+<<<<<<< HEAD
 							<img alt="Image placeholder" src="../../aset/img/theme/img-1-1000x600.jpg"
+=======
+							<img alt="Image placeholder" src="../../assets/img/theme/img-1-1000x600.jpg"
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 								class="img-fluid rounded">
 							<div class="row align-items-center my-3 pb-3 border-bottom">
 								<div class="col-sm-6">
@@ -176,17 +184,29 @@
 										<div class="avatar-group">
 											<a href="#" class="avatar avatar-xs rounded-circle" data-toggle="tooltip"
 												data-original-title="Jessica Rowland">
+<<<<<<< HEAD
 												<img alt="Image placeholder" src="../../aset/img/theme/team-1.jpg"
+=======
+												<img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg"
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 													class="">
 											</a>
 											<a href="#" class="avatar avatar-xs rounded-circle" data-toggle="tooltip"
 												data-original-title="Audrey Love">
+<<<<<<< HEAD
 												<img alt="Image placeholder" src="../../aset/img/theme/team-2.jpg"
+=======
+												<img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg"
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 													class="rounded-circle">
 											</a>
 											<a href="#" class="avatar avatar-xs rounded-circle" data-toggle="tooltip"
 												data-original-title="Michael Lewis">
+<<<<<<< HEAD
 												<img alt="Image placeholder" src="../../aset/img/theme/team-3.jpg"
+=======
+												<img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg"
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 													class="rounded-circle">
 											</a>
 										</div>
@@ -199,7 +219,11 @@
 								<div class="media media-comment">
 									<img alt="Image placeholder"
 										class="avatar avatar-lg media-comment-avatar rounded-circle"
+<<<<<<< HEAD
 										src="../../aset/img/theme/team-1.jpg">
+=======
+										src="../../assets/img/theme/team-1.jpg">
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 									<div class="media-body">
 										<div class="media-comment-text">
 											<h6 class="h5 mt-0">Michael Lewis</h6>
@@ -222,7 +246,11 @@
 								<div class="media media-comment">
 									<img alt="Image placeholder"
 										class="avatar avatar-lg media-comment-avatar rounded-circle"
+<<<<<<< HEAD
 										src="../../aset/img/theme/team-2.jpg">
+=======
+										src="../../assets/img/theme/team-2.jpg">
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 									<div class="media-body">
 										<div class="media-comment-text">
 											<h6 class="h5 mt-0">Jessica Stones</h6>
@@ -245,7 +273,11 @@
 								<hr>
 								<div class="media align-items-center">
 									<img alt="Image placeholder" class="avatar avatar-lg rounded-circle mr-4"
+<<<<<<< HEAD
 										src="../../aset/img/theme/team-3.jpg">
+=======
+										src="../../assets/img/theme/team-3.jpg">
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 									<div class="media-body">
 										<form>
 											<textarea class="form-control" placeholder="Write your comment"
@@ -268,7 +300,11 @@
 	<?php $this->load->view('user/_partials/modal.php');?>
 	<?php $this->load->view('user/_partials/js.php');?>
 	<!-- Demo JS - remove this in your project -->
+<<<<<<< HEAD
 	<!-- <script src="../aset/js/demo.min.js"></script> -->
+=======
+	<!-- <script src="../assets/js/demo.min.js"></script> -->
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 </body>
 
 </html>

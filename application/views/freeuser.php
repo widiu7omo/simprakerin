@@ -156,7 +156,11 @@
 <!--        <div class="container">-->
 <!--            <div class="row row-grid align-items-center">-->
 <!--                <div class="col-md-6 order-md-2">-->
+<<<<<<< HEAD
 <!--                    <img src="--><?php //echo base_url( 'aset/img/theme/landing-1.png' ) ?><!--" class="img-fluid">-->
+=======
+<!--                    <img src="--><?php //echo base_url( 'assets/img/theme/landing-1.png' ) ?><!--" class="img-fluid">-->
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 <!--                </div>-->
 <!--                <div class="col-md-6 order-md-1">-->
 <!--                    <div class="pr-md-5">-->
@@ -213,7 +217,11 @@
 <!--        <div class="container">-->
 <!--            <div class="row row-grid align-items-center">-->
 <!--                <div class="col-md-6">-->
+<<<<<<< HEAD
 <!--                    <img src="--><?php //echo base_url( 'aset/img/theme/landing-2.png' ) ?><!--" class="img-fluid">-->
+=======
+<!--                    <img src="--><?php //echo base_url( 'assets/img/theme/landing-2.png' ) ?><!--" class="img-fluid">-->
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 <!--                </div>-->
 <!--                <div class="col-md-6">-->
 <!--                    <div class="pr-md-5">-->
@@ -232,7 +240,11 @@
 <!--        <div class="container">-->
 <!--            <div class="row row-grid align-items-center">-->
 <!--                <div class="col-md-6 order-md-2">-->
+<<<<<<< HEAD
 <!--                    <img src="--><?php //echo base_url( 'aset/img/theme/landing-3.png' ) ?><!--" class="img-fluid">-->
+=======
+<!--                    <img src="--><?php //echo base_url( 'assets/img/theme/landing-3.png' ) ?><!--" class="img-fluid">-->
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 <!--                </div>-->
 <!--                <div class="col-md-6 order-md-1">-->
 <!--                    <div class="pr-md-5">-->
@@ -407,6 +419,7 @@
 </footer>
 <!-- Argon Scripts -->
 <!-- Core -->
+<<<<<<< HEAD
 <script src="<?php echo base_url( 'aset/vendor/jquery/dist/jquery.min.js' ) ?>"></script>
 <script src="<?php echo base_url( 'aset/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' ) ?>"></script>
 <script src="<?php echo base_url( 'aset/vendor/js-cookie/js.cookie.js' ) ?>"></script>
@@ -417,6 +430,18 @@
 <script src="<?php echo base_url( 'aset/vendor/onscreen/dist/on-screen.umd.min.js' ) ?>"></script>
 <!-- Argon JS -->
 <script src="<?php echo base_url( 'aset/js/argonpro.js?v=1.0.0' ) ?>"></script>
+=======
+<script src="<?php echo base_url( 'assets/vendor/jquery/dist/jquery.min.js' ) ?>"></script>
+<script src="<?php echo base_url( 'assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' ) ?>"></script>
+<script src="<?php echo base_url( 'assets/vendor/js-cookie/js.cookie.js' ) ?>"></script>
+<script src="<?php echo base_url( 'assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js' ) ?>"></script>
+<script src="<?php echo base_url( 'assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js' ) ?>"></script>
+<script src="<?php echo base_url( 'assets/vendor/lavalamp/js/jquery.lavalamp.min.js' ) ?>"></script>
+<!-- Optional JS -->
+<script src="<?php echo base_url( 'assets/vendor/onscreen/dist/on-screen.umd.min.js' ) ?>"></script>
+<!-- Argon JS -->
+<script src="<?php echo base_url( 'assets/js/argonpro.js?v=1.0.0' ) ?>"></script>
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 </body>
 
 </html>

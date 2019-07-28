@@ -58,7 +58,11 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
+<<<<<<< HEAD
 $autoload['libraries'] = array('database', 'session');
+=======
+$autoload['libraries'] = array('database','session');
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +93,11 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
+<<<<<<< HEAD
 $autoload['helper'] = array('url','tanggal_indo_helper', 'file');
+=======
+$autoload['helper'] = array('url','file');
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 
 /*
 | -------------------------------------------------------------------

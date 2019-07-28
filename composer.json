@@ -12,8 +12,15 @@
 	},
 	"require": {
 		"php": ">=5.3.7",
+<<<<<<< HEAD
 		"auth0/auth0-php": "~5.0"
 	},
+=======
+		"phpoffice/phpspreadsheet": "^1.6",
+		"phpoffice/phpword": "^0.16.0",
+      "ext-json": "*"
+    },
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
 	},

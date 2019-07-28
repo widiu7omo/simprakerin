@@ -50,7 +50,11 @@
 </head>
 <body>
 <div class="Section1">
+<<<<<<< HEAD
     <img src="<?php echo base_url( 'aset/img/surat/header2.png' ) ?>" width="100%" height="100%">
+=======
+    <img src="<?php echo base_url( 'assets/img/surat/header2.png' ) ?>" width="100%" height="100%">
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
     <hr style="color: #000; border: solid black 4px;height: 4px;">
     <table>
         <tr>

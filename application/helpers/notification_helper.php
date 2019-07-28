@@ -27,7 +27,10 @@ if ( ! function_exists('get_notification'))
             elseif($status == 1){
                 $ci->db->where(['status'=>$status]);
             }
+<<<<<<< HEAD
             $ci->db->order_by('waktu','DESC');
+=======
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
             return $ci->db->get()->result();
         }
 }
@@ -91,4 +94,8 @@ if ( ! function_exists('timediff_notification'))
         }
 }
 
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8

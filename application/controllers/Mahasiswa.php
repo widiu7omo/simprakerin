@@ -369,7 +369,10 @@ class Mahasiswa extends MY_Controller {
 
 	public function print_pengajuan() {
 		$get = $this->input->get();
+<<<<<<< HEAD
 		$post = $this->input->post();
+=======
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 		//id perusahaan
 
 		//sending parameter to surat permohoanan
@@ -402,12 +405,18 @@ class Mahasiswa extends MY_Controller {
 		];
 		$data['permohonan']    = datajoin( 'tb_perusahaan_sementara', $where, $select, $joins, null );
 		$data['id_perusahaan'] = $get['id'];
+<<<<<<< HEAD
 		$data['nomor_surat'] = masterdata( 'tb_jenis_surat', 'nama_jenis_surat = "Permohonan Magang"','suffix_no_surat');
 //		var_dump( $data);
 		if ( isset( $post['button'] ) ) {
 			//update status proses permohonan if save is define
 			$id['id_perusahaan'] = $post['id'];
 			$data['urut'] = $post['urut'];
+=======
+		if ( isset( $get['save'] ) ) {
+			//update status proses permohonan if save is define
+			$id['id_perusahaan'] = $get['id'];
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 			$update['status']    = 'cetak';
 			$this->pengajuan_model->update_multi( $update, $id );
 

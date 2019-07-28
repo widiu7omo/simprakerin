@@ -63,7 +63,11 @@ $perusahaan = masterdata( 'tb_perusahaan', "id_perusahaan = {$id}", 'nama_perusa
                             <div class="col-md-12 col-lg-12 col-sm-12">
                                 <!--@TODO: Alternate if docx file , but must hosting <iframe src="https://docs.google.com/gview?url=http://remote.url.tld/path/to/document.doc&embedded=true"></iframe>-->
                                 <iframe class="col-md-12 px-0" style="border-radius: 6px" height="500px"
+<<<<<<< HEAD
                                         src="<?php echo base_url( '/ViewerJS/#../file_upload/bukti/' . preg_replace( '/^(.*\/)/', '', $berkas ) ) ?>"
+=======
+                                        src="<?php echo base_url( '/ViewerJS/#../uploads/bukti/' . preg_replace( '/^(.*\/)/', '', $berkas ) ) ?>"
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
                                         frameborder="0"></iframe>
                             </div>
                         </div>
@@ -83,7 +87,11 @@ $perusahaan = masterdata( 'tb_perusahaan', "id_perusahaan = {$id}", 'nama_perusa
 <?php $this->load->view( 'admin/_partials/loading.php' ); ?>
 <?php $this->load->view( 'admin/_partials/js.php' ); ?>
 <!-- Demo JS - remove this in your project -->
+<<<<<<< HEAD
 <!-- <script src="../aset/js/demo.min.js"></script> -->
+=======
+<!-- <script src="../assets/js/demo.min.js"></script> -->
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 </body>
 
 </html>

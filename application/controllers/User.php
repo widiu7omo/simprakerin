@@ -85,7 +85,11 @@ class User extends CI_Controller {
     }
     public function logout(){
         session_destroy();
+<<<<<<< HEAD
         redirect(site_url('blog/home'));
+=======
+        redirect(site_url('main'));
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
     }
     public function login(){
 

@@ -9,7 +9,11 @@ $mahasiswa = masterdata( 'tb_mahasiswa',['nim'=>$id],['alamat_mhs','email_mhs','
             <!-- Brand -->
             <div class="sidenav-header d-flex align-items-center">
                 <a class="navbar-brand" href="<?php echo site_url( 'main' ) ?>">
+<<<<<<< HEAD
                     <img src="<?php echo base_url( 'aset/img/brand/simblue.png' ) ?> " class="navbar-brand-img"
+=======
+                    <img src="<?php echo base_url( 'assets/img/brand/simblue.png' ) ?> " class="navbar-brand-img"
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
                          alt="...">
                 </a>
                 <div class="ml-auto">

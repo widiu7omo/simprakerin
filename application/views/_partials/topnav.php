@@ -1,7 +1,11 @@
 <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
 		<div class="container">
 			<a class="navbar-brand" href="./pages/dashboards/dashboard.html">
+<<<<<<< HEAD
 				<img src="<?php echo base_url('aset/img/brand/whitesim.png') ?> ">
+=======
+				<img src="<?php echo base_url('assets/img/brand/whitesim.png') ?> ">
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
 				aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +16,11 @@
 					<div class="row">
 						<div class="col-6 collapse-brand">
 							<a href="./pages/dashboards/dashboard.html">
+<<<<<<< HEAD
 								<img src="<?php echo base_url('aset/img/brand/simblue.png') ?>">
+=======
+								<img src="<?php echo base_url('assets/img/brand/simblue.png') ?>">
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 							</a>
 						</div>
 						<div class="col-6 collapse-close">

@@ -20,13 +20,21 @@
 			<div class="row">
 <!--				<div class="col-xl-4 order-xl-2">-->
 <!--					<div class="card card-profile">-->
+<<<<<<< HEAD
 <!--						<img src="--><?php //echo base_url('aset/img/theme/bg-profile.svg') ?><!--" alt="Image placeholder"-->
+=======
+<!--						<img src="--><?php //echo base_url('assets/img/theme/bg-profile.svg') ?><!--" alt="Image placeholder"-->
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 <!--							class="card-img-top">-->
 <!--						<div class="row justify-content-center">-->
 <!--							<div class="col-lg-3 order-lg-2">-->
 <!--								<div class="card-profile-image">-->
 <!--									<a href="#">-->
+<<<<<<< HEAD
 <!--										<img src="--><?php //echo base_url('aset/img/theme/team-4-800x800.jpg') ?><!-- "-->
+=======
+<!--										<img src="--><?php //echo base_url('assets/img/theme/team-4-800x800.jpg') ?><!-- "-->
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 <!--											class="rounded-circle">-->
 <!--									</a>-->
 <!--								</div>-->

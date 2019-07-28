@@ -41,6 +41,7 @@ class Akun_model extends CI_Model {
 		return $this->db->get_where( $this->_table, [ $this->_primary_key => $id ] )->row();
 	}
 
+<<<<<<< HEAD
 	public function getAllAccounts($kind = null){
 		$this->db->select('tb_akun.username, tb_akun.password, tb_akun.level,tb_akun.id_level')
 		         ->from('(select tb_akun.*,tb_level.id_level,tb_master_level.nama_master_level as level from tb_akun inner join tb_level on tb_akun.username = tb_level.username left outer join tb_master_level on tb_level.id_master_level = tb_master_level.id_master_level) tb_akun');
@@ -69,6 +70,9 @@ class Akun_model extends CI_Model {
 	}
 
 	public function getAccount( $akun) {
+=======
+	public function getAccount( $akun ) {
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 		$result = null;
 		// var_dump('reading');
 		//why two, cause akun require only username and password
@@ -79,7 +83,11 @@ class Akun_model extends CI_Model {
 				'tb_akun.password as password'
 			) )
            ->from( 'tb_akun' )
+<<<<<<< HEAD
            ->join( 'tb_level', 'tb_akun.username = tb_level.username', 'left outer' )
+=======
+           ->join( 'tb_level', 'tb_akun.username = tb_level.username', 'inner' )
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
            ->join( 'tb_master_level', 'tb_level.id_master_level = tb_master_level.id_master_level' )
            ->where( $akun )->get()->result();
 		}

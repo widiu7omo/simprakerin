@@ -6,7 +6,11 @@ if ( ! function_exists('do_upload'))
 {
     function do_upload(){
         $ci=& get_instance();
+<<<<<<< HEAD
             $config['upload_path']          = './file_upload/';
+=======
+            $config['upload_path']          = './uploads/';
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
             $config['allowed_types']        = 'xls|xlsx';
             $config['max_size']             = 10240;
 
@@ -32,7 +36,11 @@ if ( ! function_exists('do_upload_doc'))
 {
 	function do_upload_doc(){
 		$ci=& get_instance();
+<<<<<<< HEAD
 		$config['upload_path']          = './file_upload/bukti/';
+=======
+		$config['upload_path']          = './uploads/bukti/';
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 		$config['allowed_types']        = 'pdf|docx|doc';
 		$config['max_size']             = 10240;
 

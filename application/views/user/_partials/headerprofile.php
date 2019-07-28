@@ -1,5 +1,9 @@
 <div class="header pb-6 d-flex align-items-center"
+<<<<<<< HEAD
 	style="min-height: 500px; background-image: url(<?php echo base_url('aset/img/theme/bg-full-profile.svg') ?>); background-size: cover; background-position: center top;">
+=======
+	style="min-height: 500px; background-image: url(<?php echo base_url('assets/img/theme/bg-full-profile.svg') ?>); background-size: cover; background-position: center top;">
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 	<!-- Mask -->
 	<span class="mask bg-gradient-default opacity-8"></span>
 	<!-- Header container -->

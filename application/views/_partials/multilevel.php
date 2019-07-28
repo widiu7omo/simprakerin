@@ -1,5 +1,9 @@
 <?php $levels = $this->session->flashdata('multilevel');
+<<<<<<< HEAD
 var_dump($levels);
+=======
+//var_dump($levels);
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 ?>
 <form action="<?php echo site_url('login?in=multi') ?>" method="POST">
 	<div class="modal fade" id="levelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -12,7 +16,11 @@ var_dump($levels);
 				<div class="modal-body">
 					<select class="form-control" name="level">
 						<?php foreach($levels as $level): ?>
+<<<<<<< HEAD
 						<option value='[<?php echo '"'.$level->id.'","'.$level->userpass.'","'.$level->level.'"' ?>]'>
+=======
+						<option value='[<?php echo '"'.$level->id.'","'.$level->password.'","'.$level->level.'"' ?>]'>
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 							<?php echo ucfirst($level->level) ?></option>
 						<?php endforeach; ?>
 					</select>

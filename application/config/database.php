@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 defined('BASEPATH') OR exit('No direct script access allowed');
+=======
+defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 
 /*
 | -------------------------------------------------------------------
@@ -70,8 +74,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
+<<<<<<< HEAD
 $active_group = 'default';
 $query_builder = TRUE;
+=======
+$active_group  = 'default';
+$query_builder = true;
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 
 $db = array(
 	'default'     => array(
@@ -117,3 +126,28 @@ $db = array(
 		'save_queries' => true
 	)
 );
+<<<<<<< HEAD
+=======
+
+//$db['default'] = array(
+//	'dsn'	=> '',
+//	'hostname' => '64.62.211.134',
+//	'username' => 'widiu7_simpra',
+//	'password' => 'simprakerin2019',
+//	'database' => 'widiu7_simprakerin',
+//	'dbdriver' => 'mysqli',
+//	'dbprefix' => '',
+//	'pconnect' => FALSE,
+//	'db_debug' => (ENVIRONMENT !== 'production'),
+//	'cache_on' => FALSE,
+//	'cachedir' => '',
+//	'char_set' => 'utf8',
+//	'dbcollat' => 'utf8_general_ci',
+//	'swap_pre' => '',
+//	'encrypt' => FALSE,
+//	'compress' => FALSE,
+//	'stricton' => FALSE,
+//	'failover' => array(),
+//	'save_queries' => TRUE
+//);
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8

@@ -8,10 +8,14 @@ application/logs/*
 
 !application/*/.htaccess
 
+<<<<<<< HEAD
 composer.lock
 uploads/*
 foto_kuisioner/*
 file_upload/*
+=======
+
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
@@ -23,6 +27,11 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /nbproject/
 .idea/*
 
+<<<<<<< HEAD
+=======
+uploads
+
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 ## Sublime Text cache files
 *.tmlanguage.cache
 *.tmPreferences.cache

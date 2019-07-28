@@ -129,7 +129,11 @@ $prodies = masterdata( 'tb_program_studi');
 	<?php endforeach; ?>
 </script>
 <!-- Demo JS - remove this in your project -->
+<<<<<<< HEAD
 <!-- <script src="../aset/js/demo.min.js"></script> -->
+=======
+<!-- <script src="../assets/js/demo.min.js"></script> -->
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 </body>
 
 </html>

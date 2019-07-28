@@ -94,8 +94,13 @@ $dosens = masterdata( 'tb_pegawai', 'status = "dosen"', 'nama_pegawai,nip_nik', 
 ?>
 
 <!-- Sortable Draggable -->
+<<<<<<< HEAD
 <script src="<?php echo base_url( 'aset/vendor/sortablejs/Sortable.js' ) ?>"></script>
 <script src="<?php echo base_url( 'aset/vendor/sortablejs/jquery-sortable.js' ) ?>"></script>
+=======
+<script src="<?php echo base_url( 'assets/vendor/sortablejs/Sortable.js' ) ?>"></script>
+<script src="<?php echo base_url( 'assets/vendor/sortablejs/jquery-sortable.js' ) ?>"></script>
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 <script>
     let data_pembimbing_sementara = [];
     $("button#simpan").on('click',()=>{

@@ -14,7 +14,11 @@
     "generated" : "true",
     "icons" : [
         {
+<<<<<<< HEAD
             "src": "https://simprakerin.herokuapp.com/aset/img/brand/favicon.png",
+=======
+            "src": "https://simprakerin.herokuapp.com/assets/img/brand/favicon.png",
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
             "sizes": "32x32"
         }
     ]}

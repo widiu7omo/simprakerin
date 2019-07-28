@@ -51,7 +51,12 @@ $dataNotification = get_notification($this->session->userdata('id'),0);
 					<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false">
                         <i class="ni ni-bell-55"></i>
+<<<<<<< HEAD
 						<span class="pulsate badge badge-circle badge-floating badge-danger border-white badge-top-right"><?php echo isset($countNotification)?$countNotification:0 ?></span>
+=======
+                        
+						<span class="badge badge-circle badge-floating badge-danger border-white badge-top-right"><?php echo isset($countNotification)?$countNotification:0 ?></span>
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 					</a>
 					<div class="dropdown-menu dropdown-menu-xl dropdown-menu-right py-0 overflow-hidden">
 						<!-- Dropdown header -->
@@ -86,6 +91,7 @@ $dataNotification = get_notification($this->session->userdata('id'),0);
 						<a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a> -->
 					</div>
 				</li>
+<<<<<<< HEAD
 <!--				<li class="nav-item dropdown">-->
 <!--					<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"-->
 <!--						aria-expanded="false">-->
@@ -132,6 +138,54 @@ $dataNotification = get_notification($this->session->userdata('id'),0);
 <!--						</div>-->
 <!--					</div>-->
 <!--				</li>-->
+=======
+				<li class="nav-item dropdown">
+					<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">
+						<i class="ni ni-ungroup"></i>
+					</a>
+					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-dark bg-default dropdown-menu-right">
+						<div class="row shortcuts px-4">
+							<a href="#!" class="col-4 shortcut-item">
+								<span class="shortcut-media avatar rounded-circle bg-gradient-red">
+									<i class="ni ni-calendar-grid-58"></i>
+								</span>
+								<small>Calendar</small>
+							</a>
+							<a href="#!" class="col-4 shortcut-item">
+								<span class="shortcut-media avatar rounded-circle bg-gradient-orange">
+									<i class="ni ni-email-83"></i>
+								</span>
+								<small>Email</small>
+							</a>
+							<a href="#!" class="col-4 shortcut-item">
+								<span class="shortcut-media avatar rounded-circle bg-gradient-info">
+									<i class="ni ni-credit-card"></i>
+								</span>
+								<small>Payments</small>
+							</a>
+							<a href="#!" class="col-4 shortcut-item">
+								<span class="shortcut-media avatar rounded-circle bg-gradient-green">
+									<i class="ni ni-books"></i>
+								</span>
+								<small>Reports</small>
+							</a>
+							<a href="#!" class="col-4 shortcut-item">
+								<span class="shortcut-media avatar rounded-circle bg-gradient-purple">
+									<i class="ni ni-pin-3"></i>
+								</span>
+								<small>Maps</small>
+							</a>
+							<a href="#!" class="col-4 shortcut-item">
+								<span class="shortcut-media avatar rounded-circle bg-gradient-yellow">
+									<i class="ni ni-basket"></i>
+								</span>
+								<small>Shop</small>
+							</a>
+						</div>
+					</div>
+				</li>
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 			</ul>
 			<ul class="navbar-nav align-items-center ml-auto ml-md-0">
 				<li class="nav-item dropdown">
@@ -154,6 +208,7 @@ $dataNotification = get_notification($this->session->userdata('id'),0);
 							<i class="ni ni-single-02"></i>
 							<span>My profile</span>
 						</a>
+<<<<<<< HEAD
 <!--						<a href="#!" class="dropdown-item">-->
 <!--							<i class="ni ni-settings-gear-65"></i>-->
 <!--							<span>Settings</span>-->
@@ -166,6 +221,20 @@ $dataNotification = get_notification($this->session->userdata('id'),0);
 <!--							<i class="ni ni-support-16"></i>-->
 <!--							<span>Support</span>-->
 <!--						</a>-->
+=======
+						<a href="#!" class="dropdown-item">
+							<i class="ni ni-settings-gear-65"></i>
+							<span>Settings</span>
+						</a>
+						<a href="#!" class="dropdown-item">
+							<i class="ni ni-calendar-grid-58"></i>
+							<span>Activity</span>
+						</a>
+						<a href="#!" class="dropdown-item">
+							<i class="ni ni-support-16"></i>
+							<span>Support</span>
+						</a>
+>>>>>>> 5afebab207b07bf6bf315a9f7d03a7245fb91af8
 						<div class="dropdown-divider"></div>
 						<a href="<?php echo site_url('user/logout') ?>" class="dropdown-item">
 							<i class="ni ni-user-run"></i>
